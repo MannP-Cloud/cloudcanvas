@@ -5,28 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CloudCanvas — AZ-104 Azure Lab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --cream:#F5F0E8;--cream2:#EDE8DC;--cream3:#E3DCCF;
   --ink:#1C1917;--ink2:#44403C;--ink3:#78716C;
-  --accent:#C2410C;--accent2:#EA580C;
+  --accent:#C2410C;
   --blue:#1E40AF;--teal:#0F766E;--purple:#6D28D9;--amber:#B45309;--green:#15803D;
   --radius:14px;--shadow:0 4px 24px rgba(28,25,23,0.1);
 }
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;overflow-x:hidden}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(245,240,232,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(28,25,23,0.08)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--ink);letter-spacing:-0.02em;text-decoration:none}
-.nav-logo span{color:var(--accent)}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(245,240,232,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(28,25,23,0.08)}
+.nav-logo{text-decoration:none;display:flex;align-items:baseline;gap:0;line-height:1}
+.nav-logo-cc{font-family:'Playfair Display',serif;font-size:13px;font-weight:400;color:var(--ink3);letter-spacing:0.18em;text-transform:uppercase}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ink);letter-spacing:-0.03em;margin-left:6px}
+.nav-logo-main span{color:var(--accent);font-style:italic}
 .nav-links{display:flex;align-items:center;gap:2rem}
-.nav-links a{font-size:13px;font-weight:400;color:var(--ink3);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+.nav-links a{font-size:13px;font-weight:400;color:var(--ink3);text-decoration:none;transition:color 0.2s}
 .nav-links a:hover{color:var(--ink)}
 .nav-cta{font-size:12px;font-weight:500;color:var(--cream) !important;background:var(--ink);padding:8px 18px;border-radius:100px;transition:background 0.2s !important}
 .nav-cta:hover{background:var(--accent) !important}
 
+/* HERO */
 .hero{padding:9rem 2.5rem 5rem;max-width:900px;margin:0 auto}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem}
 .hero-tag::before{content:'';width:24px;height:1px;background:var(--accent)}
@@ -34,7 +38,7 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(42px,6vw,72px);font-weig
 h1 em{font-style:italic;color:var(--accent)}
 .hero-sub{font-size:17px;font-weight:300;color:var(--ink2);line-height:1.7;max-width:560px;margin-bottom:2.5rem}
 .hero-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.btn-primary{font-size:14px;font-weight:500;color:var(--cream);background:var(--ink);padding:13px 28px;border-radius:100px;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{font-size:14px;font-weight:500;color:var(--cream);background:var(--ink);padding:13px 28px;border-radius:100px;text-decoration:none;transition:all 0.2s}
 .btn-primary:hover{background:var(--accent);transform:translateY(-1px)}
 .btn-secondary{font-size:14px;font-weight:400;color:var(--ink2);padding:13px 28px;border-radius:100px;text-decoration:none;border:1px solid rgba(28,25,23,0.15);transition:all 0.2s}
 .btn-secondary:hover{border-color:var(--ink);color:var(--ink)}
@@ -44,38 +48,49 @@ h1 em{font-style:italic;color:var(--accent)}
 
 .divider-line{height:1px;background:rgba(28,25,23,0.08);margin:0 2.5rem}
 
+/* SECTIONS */
 .section{padding:4rem 2.5rem;max-width:1100px;margin:0 auto}
 .section-label{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.75rem}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,40px);font-weight:500;letter-spacing:-0.02em;color:var(--ink);margin-bottom:0.5rem}
 .section-sub{font-size:15px;color:var(--ink2);font-weight:300;line-height:1.7;max-width:520px;margin-bottom:2.5rem}
 
+/* ARCHITECTURE SECTION */
+.arch-layout{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
+@media(max-width:700px){.arch-layout{grid-template-columns:1fr}}
+.arch-visual{width:180px;opacity:0.75;filter:mix-blend-mode(multiply);flex-shrink:0;margin-top:-1rem}
+@media(max-width:700px){.arch-visual{width:120px;margin:0 auto}}
+.arch-card{background:white;border:1px solid rgba(28,25,23,0.08);border-radius:var(--radius);overflow:hidden;margin-bottom:1rem}
+.arch-img{width:100%;display:block}
+.arch-caption{padding:1rem 1.25rem;font-size:13px;color:var(--ink2);font-weight:300;border-top:1px solid rgba(28,25,23,0.06)}
+.arch-caption a{color:var(--accent);text-decoration:none}
+.arch-caption a:hover{text-decoration:underline}
+
+/* SEARCH */
 .search-wrap{position:relative;max-width:420px;margin-bottom:2rem}
 .search-wrap input{width:100%;padding:12px 16px 12px 44px;font-family:'DM Sans',sans-serif;font-size:14px;background:white;border:1px solid rgba(28,25,23,0.12);border-radius:100px;color:var(--ink);outline:none;transition:border 0.2s}
 .search-wrap input:focus{border-color:var(--ink)}
 .search-wrap input::placeholder{color:var(--ink3)}
 .search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--ink3);font-size:15px;pointer-events:none}
 
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem}
-.filter-btn{font-size:12px;font-weight:500;padding:7px 16px;border-radius:100px;border:1px solid rgba(28,25,23,0.12);background:white;color:var(--ink2);cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
-.filter-btn:hover{border-color:var(--ink);color:var(--ink)}
-.filter-btn.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
-.filter-btn[data-domain="identity"].active{background:var(--purple);border-color:var(--purple)}
-.filter-btn[data-domain="storage"].active{background:var(--blue);border-color:var(--blue)}
-.filter-btn[data-domain="compute"].active{background:var(--teal);border-color:var(--teal)}
-.filter-btn[data-domain="network"].active{background:var(--amber);border-color:var(--amber)}
-.filter-btn[data-domain="monitor"].active{background:var(--green);border-color:var(--green)}
+/* FILTERS */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2.5rem}
+.filter-btn{font-size:13px;font-weight:400;padding:7px 0;background:none;border:none;color:var(--ink3);cursor:pointer;transition:color 0.2s;font-family:'Playfair Display',serif;font-style:italic;letter-spacing:0.01em;border-bottom:1px solid transparent}
+.filter-btn:hover{color:var(--ink)}
+.filter-btn.active{color:var(--ink);border-bottom:1px solid var(--ink)}
+.filter-btn[data-domain="identity"].active{color:var(--purple);border-bottom-color:var(--purple)}
+.filter-btn[data-domain="storage"].active{color:var(--blue);border-bottom-color:var(--blue)}
+.filter-btn[data-domain="compute"].active{color:var(--teal);border-bottom-color:var(--teal)}
+.filter-btn[data-domain="network"].active{color:var(--amber);border-bottom-color:var(--amber)}
+.filter-btn[data-domain="monitor"].active{color:var(--green);border-bottom-color:var(--green)}
+.filter-sep{color:var(--ink3);font-size:11px;align-self:center;padding:0 2px}
 
-.domain-group{margin-bottom:3rem}
-.domain-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid rgba(28,25,23,0.08)}
-.domain-pill{font-size:11px;font-weight:500;padding:4px 12px;border-radius:100px;letter-spacing:0.04em}
-.dp-identity{background:#EDE9FE;color:#5B21B6}
-.dp-storage{background:#DBEAFE;color:#1E40AF}
-.dp-compute{background:#CCFBF1;color:#0F766E}
-.dp-network{background:#FEF3C7;color:#B45309}
-.dp-monitor{background:#DCFCE7;color:#15803D}
-.domain-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:500;color:var(--ink)}
-.domain-pct{font-size:12px;color:var(--ink3);margin-left:auto;font-family:'DM Mono',monospace}
+/* DOMAIN GROUPS */
+.domain-group{margin-bottom:3rem;scroll-margin-top:80px}
+.domain-header{display:flex;align-items:baseline;gap:16px;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid rgba(28,25,23,0.08)}
+.domain-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:500;color:var(--ink);letter-spacing:-0.01em}
+.domain-pct{font-size:11px;color:var(--ink3);margin-left:auto;font-family:'DM Mono',monospace;letter-spacing:0.04em}
 
+/* NODES */
 .node-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
 .node{background:white;border:1px solid rgba(28,25,23,0.08);border-radius:var(--radius);padding:1rem;cursor:pointer;transition:all 0.25s;display:flex;flex-direction:column;align-items:flex-start;gap:8px;position:relative;overflow:hidden}
 .node:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:rgba(28,25,23,0.15)}
@@ -84,13 +99,15 @@ h1 em{font-style:italic;color:var(--accent)}
 .node-label{font-size:12px;font-weight:500;color:var(--ink);line-height:1.3}
 .node-hint{font-size:10px;color:var(--ink3);opacity:0;transition:opacity 0.2s;font-weight:400}
 .node:hover .node-hint{opacity:1}
-
 .ni-purple{background:#EDE9FE;color:#6D28D9}
 .ni-blue{background:#DBEAFE;color:#1E40AF}
 .ni-teal{background:#CCFBF1;color:#0F766E}
 .ni-amber{background:#FEF3C7;color:#B45309}
 .ni-green{background:#DCFCE7;color:#15803D}
+.hidden{display:none !important}
+.no-results{font-size:14px;color:var(--ink3);padding:2rem 0;display:none}
 
+/* PANEL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(28,25,23,0.5);z-index:200;align-items:flex-end;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
 .overlay.active{display:flex}
 @media(min-width:640px){.overlay{align-items:center}}
@@ -104,7 +121,6 @@ h1 em{font-style:italic;color:var(--accent)}
 .panel-close{background:none;border:none;cursor:pointer;color:var(--ink3);font-size:20px;padding:4px;line-height:1;border-radius:6px;transition:background 0.2s;flex-shrink:0}
 .panel-close:hover{background:var(--cream2);color:var(--ink)}
 .panel-body{padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem}
-.p-block{}
 .p-label{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
 .p-text{font-size:14px;color:var(--ink2);line-height:1.7;font-weight:300}
 .p-tip{background:white;border:1px solid rgba(28,25,23,0.08);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--ink2);line-height:1.6}
@@ -114,12 +130,7 @@ h1 em{font-style:italic;color:var(--accent)}
 .p-tags{display:flex;flex-wrap:wrap;gap:6px}
 .p-tag{font-size:11px;padding:3px 10px;border-radius:100px;background:white;border:1px solid rgba(28,25,23,0.1);color:var(--ink2);font-weight:400}
 
-.arch-card{background:white;border:1px solid rgba(28,25,23,0.08);border-radius:var(--radius);overflow:hidden;margin-bottom:1rem}
-.arch-img{width:100%;display:block}
-.arch-caption{padding:1rem 1.25rem;font-size:13px;color:var(--ink2);font-weight:300;border-top:1px solid rgba(28,25,23,0.06)}
-.arch-caption a{color:var(--accent);text-decoration:none}
-.arch-caption a:hover{text-decoration:underline}
-
+/* PROGRESS */
 .progress-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:1.5rem}
 .prog-card{background:white;border:1px solid rgba(28,25,23,0.08);border-radius:var(--radius);padding:1.25rem}
 .prog-label{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:8px}
@@ -127,25 +138,28 @@ h1 em{font-style:italic;color:var(--accent)}
 .prog-bar{height:100%;border-radius:100px}
 .prog-status{font-size:11px;color:var(--ink3);margin-top:6px}
 
+/* FOOTER */
 footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:500;color:var(--ink)}
-.footer-logo span{color:var(--accent)}
+.footer-logo span{color:var(--accent);font-style:italic}
 .footer-links{display:flex;gap:1.5rem}
 .footer-links a{font-size:13px;color:var(--ink3);text-decoration:none;transition:color 0.2s}
 .footer-links a:hover{color:var(--ink)}
-.footer-copy{font-size:12px;color:var(--ink3)}
-
-.hidden{display:none !important}
-.no-results{font-size:14px;color:var(--ink3);padding:2rem 0;display:none}
+.footer-copy{font-size:12px;color:var(--ink3);position:relative;cursor:default}
+.footer-copy .powered{position:absolute;bottom:100%;left:50%;transform:translateX(-50%) translateY(4px);background:var(--ink);color:var(--cream);font-size:11px;padding:4px 10px;border-radius:100px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s}
+.footer-copy:hover .powered{opacity:1;transform:translateX(-50%) translateY(-4px)}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Cloud<span>Canvas</span></a>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-cc">☁</span>
+    <span class="nav-logo-main">Cloud<span>Canvas</span></span>
+  </a>
   <div class="nav-links">
-    <a href="#topology">Topology</a>
     <a href="#architecture">Architecture</a>
+    <a href="#topology">Topology</a>
     <a href="#progress">Progress</a>
     <a href="https://github.com/MannP-Cloud/cloudcanvas" target="_blank">GitHub ↗</a>
     <a href="https://www.linkedin.com/in/mannp14" target="_blank" class="nav-cta">Connect</a>
@@ -157,7 +171,7 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
   <h1>Every Azure concept.<br><em>One environment.</em></h1>
   <p class="hero-sub">CloudCanvas maps every AZ-104 exam topic to a single connected Azure environment — built for learners and hiring managers who want to see real cloud knowledge in action.</p>
   <div class="hero-actions">
-    <a href="#topology" class="btn-primary">Explore topology →</a>
+    <a href="#architecture" class="btn-primary">Explore architecture →</a>
     <a href="https://github.com/MannP-Cloud/cloudcanvas" target="_blank" class="btn-secondary">View on GitHub</a>
   </div>
   <div class="hero-stats">
@@ -170,19 +184,26 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
 
 <div class="divider-line"></div>
 
-<div class="section" id="architecture">
-  <div class="section-label">Architecture</div>
-  <div class="section-title">The full environment</div>
-  <p class="section-sub">A hub-spoke Azure topology spanning 5 resource groups — each covering a core AZ-104 domain. Built with real IP ranges, real services, and real configuration.</p>
-  <div class="arch-card">
-    <img src="cloudcanvas-topology.png" alt="CloudCanvas topology diagram" class="arch-img">
-    <div class="arch-caption">Full architecture diagram · <a href="Cloudcanvas-topology.drawio" download>Download editable .drawio source ↓</a></div>
+<!-- ARCHITECTURE FIRST -->
+<div class="section" id="architecture" style="scroll-margin-top:72px">
+  <div class="arch-layout">
+    <div>
+      <div class="section-label">Architecture</div>
+      <div class="section-title">The full environment</div>
+      <p class="section-sub">A hub-spoke Azure topology spanning 5 resource groups — each covering a core AZ-104 domain. Built with real IP ranges, real services, and real configuration.</p>
+      <div class="arch-card">
+        <img src="cloudcanvas-topology.png" alt="CloudCanvas topology diagram" class="arch-img">
+        <div class="arch-caption">Full architecture diagram · <a href="Cloudcanvas-topology.drawio" download>Download editable .drawio source ↓</a></div>
+      </div>
+    </div>
+    <img src="architecture-visual.png" alt="" class="arch-visual" aria-hidden="true">
   </div>
 </div>
 
 <div class="divider-line"></div>
 
-<div class="section" id="topology">
+<!-- TOPOLOGY SECOND -->
+<div class="section" id="topology" style="scroll-margin-top:72px">
   <div class="section-label">Interactive topology</div>
   <div class="section-title">Tap any component</div>
   <p class="section-sub">Every Azure service mapped to its AZ-104 topic, real-world use, and exam tip. Search by name or filter by domain.</p>
@@ -193,20 +214,25 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
   </div>
 
   <div class="filters">
-    <button class="filter-btn active" data-domain="all">All domains</button>
+    <button class="filter-btn active" data-domain="all">All</button>
+    <span class="filter-sep">·</span>
     <button class="filter-btn" data-domain="identity">Identities & Governance</button>
+    <span class="filter-sep">·</span>
     <button class="filter-btn" data-domain="storage">Storage</button>
+    <span class="filter-sep">·</span>
     <button class="filter-btn" data-domain="compute">Compute</button>
+    <span class="filter-sep">·</span>
     <button class="filter-btn" data-domain="network">Virtual Networking</button>
+    <span class="filter-sep">·</span>
     <button class="filter-btn" data-domain="monitor">Monitor & Maintain</button>
   </div>
 
   <div id="no-results" class="no-results">No components match your search.</div>
 
   <div id="topology-content">
-    <div class="domain-group" data-domain="identity">
+
+    <div class="domain-group" data-domain="identity" id="domain-identity">
       <div class="domain-header">
-        <span class="domain-pill dp-identity">Identity</span>
         <span class="domain-name">Identities & Governance</span>
         <span class="domain-pct">20–25%</span>
       </div>
@@ -223,9 +249,8 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
       </div>
     </div>
 
-    <div class="domain-group" data-domain="storage">
+    <div class="domain-group" data-domain="storage" id="domain-storage">
       <div class="domain-header">
-        <span class="domain-pill dp-storage">Storage</span>
         <span class="domain-name">Storage</span>
         <span class="domain-pct">15–20%</span>
       </div>
@@ -242,9 +267,8 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
       </div>
     </div>
 
-    <div class="domain-group" data-domain="compute">
+    <div class="domain-group" data-domain="compute" id="domain-compute">
       <div class="domain-header">
-        <span class="domain-pill dp-compute">Compute</span>
         <span class="domain-name">Compute</span>
         <span class="domain-pct">20–25%</span>
       </div>
@@ -261,9 +285,8 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
       </div>
     </div>
 
-    <div class="domain-group" data-domain="network">
+    <div class="domain-group" data-domain="network" id="domain-network">
       <div class="domain-header">
-        <span class="domain-pill dp-network">Networking</span>
         <span class="domain-name">Virtual Networking</span>
         <span class="domain-pct">15–20%</span>
       </div>
@@ -283,9 +306,8 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
       </div>
     </div>
 
-    <div class="domain-group" data-domain="monitor">
+    <div class="domain-group" data-domain="monitor" id="domain-monitor">
       <div class="domain-header">
-        <span class="domain-pill dp-monitor">Monitor</span>
         <span class="domain-name">Monitor & Maintain</span>
         <span class="domain-pct">10–15%</span>
       </div>
@@ -301,12 +323,13 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
         <div class="node" data-id="advisor" data-domain="monitor"><div class="node-icon ni-green">💡</div><div class="node-label">Azure Advisor</div><div class="node-hint">Click to explore →</div></div>
       </div>
     </div>
+
   </div>
 </div>
 
 <div class="divider-line"></div>
 
-<div class="section" id="progress">
+<div class="section" id="progress" style="scroll-margin-top:72px">
   <div class="section-label">Build progress</div>
   <div class="section-title">What's been built</div>
   <p class="section-sub">This lab is actively being built. Sections are added as each domain is completed in Azure.</p>
@@ -331,7 +354,10 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
     <a href="https://www.linkedin.com/in/mannp14" target="_blank">LinkedIn</a>
     <a href="https://medium.com/@MannP./breaking-the-cloud-iceberg-az-900-analogy-cheat-sheet-75d432de3fa9" target="_blank">Medium / AZ-900 Analogy</a>
   </div>
-  <div class="footer-copy">Built by Mann Patel · AZ-104 · AZ-900 · MS-900</div>
+  <div class="footer-copy">
+    Built by Mann Patel · AZ-104 · AZ-900 · MS-900
+    <span class="powered">⚡ Powered by Claude</span>
+  </div>
 </footer>
 
 <div class="overlay" id="overlay">
@@ -345,144 +371,160 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
       <button class="panel-close" id="closeBtn">✕</button>
     </div>
     <div class="panel-body">
-      <div class="p-block"><div class="p-label">What it is</div><div class="p-text" id="p-what"></div></div>
-      <div class="p-block"><div class="p-label">How it's built in CloudCanvas</div><div class="p-text" id="p-how"></div></div>
+      <div><div class="p-label">What it is</div><div class="p-text" id="p-what"></div></div>
+      <div><div class="p-label">How it's built in CloudCanvas</div><div class="p-text" id="p-how"></div></div>
       <div class="p-tip"><strong>Exam tip — </strong><span id="p-exam"></span></div>
       <div class="p-corp"><strong>In the real world — </strong><span id="p-corp"></span></div>
-      <div class="p-block"><div class="p-label">AZ-104 topics covered</div><div class="p-tags" id="p-tags"></div></div>
+      <div><div class="p-label">AZ-104 topics covered</div><div class="p-tags" id="p-tags"></div></div>
     </div>
   </div>
 </div>
 
 <script>
-var D = {
+var D={
   entra:{title:"Entra ID Users & Groups",domain:"Identities & Governance · 20–25%",icon:"👤",color:"ni-purple",what:"Microsoft Entra ID (formerly Azure AD) is Azure's cloud identity platform. Users are individual accounts; groups are collections used to assign access at scale.",how:"Create 10 Contoso users via Portal and PowerShell bulk CSV import. Organize into groups: IT-Admins, Developers, Finance. Configure dynamic group membership rules.",exam:"Know the difference between Assigned and Dynamic membership groups. Bulk operations use CSV templates. Guest users (B2B) are external identities.",corp:"Every organization uses Entra ID to manage who can log in, what they can access, and how devices are registered. It's the backbone of Microsoft 365 and Azure access.",tags:["Create users","Bulk import","Dynamic groups","B2B guest access","Device settings"]},
-  rbac:{title:"RBAC Roles",domain:"Identities & Governance · 20–25%",icon:"🔑",color:"ni-purple",what:"Role-Based Access Control (RBAC) controls who can do what on which Azure resources. Roles are assigned at management group, subscription, resource group, or resource scope.",how:"Assign Owner to IT-Admins at subscription scope. Assign Contributor to Developers at rg-compute. Assign Reader to Finance at rg-monitor. Create one custom role.",exam:"Roles are inherited down the scope hierarchy. Owner > Contributor > Reader. Custom roles require JSON definition. Deny assignments override allow.",corp:"Least-privilege access is a security requirement in every enterprise. Azure admins spend significant time managing RBAC as teams grow.",tags:["Assign roles","Scope levels","Custom roles","Least privilege","Inheritance model"]},
-  policy:{title:"Azure Policy",domain:"Identities & Governance · 20–25%",icon:"📋",color:"ni-purple",what:"Azure Policy enforces organizational rules across your environment automatically. It can audit, deny, or auto-remediate non-compliant resources.",how:"Create a policy requiring all resources to have a Project: CloudCanvas tag. Create a second policy denying expensive VM SKUs. Assign at subscription scope.",exam:"Policy is not RBAC. Policy controls what can be deployed; RBAC controls who can deploy it. Initiatives are groups of policies. DeployIfNotExists can auto-remediate.",corp:"Enterprises use Policy to enforce tagging standards, restrict regions, require encryption, and ensure compliance with ISO 27001 and SOC 2.",tags:["Policy definition","Policy assignment","Initiatives","Compliance dashboard","DeployIfNotExists"]},
-  locks:{title:"Resource Locks",domain:"Identities & Governance · 20–25%",icon:"🔒",color:"ni-purple",what:"Resource Locks prevent accidental deletion or modification of critical Azure resources. Two types: ReadOnly and CanNotDelete.",how:"Apply a CanNotDelete lock on the Recovery Services Vault and production storage account. Apply ReadOnly on the hub VNet.",exam:"Locks apply to all users including Owners. CanNotDelete still allows modification. ReadOnly prevents both. Locks are inherited by child resources.",corp:"Production databases, vaults, and network infrastructure always have locks applied. A single accidental delete can bring down services for thousands of users.",tags:["CanNotDelete","ReadOnly lock","Lock inheritance","Scope application"]},
-  mgmt:{title:"Management Groups",domain:"Identities & Governance · 20–25%",icon:"🏢",color:"ni-purple",what:"Management Groups organize multiple subscriptions under a hierarchy. Policies and RBAC assigned at the management group level apply to all subscriptions beneath it.",how:"Create a root management group CloudCanvas-Root with two child groups: Production and Dev-Test. Place the subscription under Production.",exam:"Up to 6 levels of hierarchy excluding root. Root group cannot be moved or deleted. A subscription can only be in one management group at a time.",corp:"Large enterprises with dozens of subscriptions use management groups to enforce governance centrally.",tags:["Hierarchy","Policy inheritance","Subscription organization","Root management group"]},
-  sspr:{title:"Self-Service Password Reset",domain:"Identities & Governance · 20–25%",icon:"🔄",color:"ni-purple",what:"SSPR allows users to reset their own passwords without calling the help desk. Requires authentication methods like phone, email, or authenticator app.",how:"Enable SSPR for the Developers group. Configure two authentication methods required. Test the reset flow with a test user account.",exam:"SSPR requires Entra ID P1/P2 for on-premises writeback. You can enable for All users or Selected groups.",corp:"Password resets are one of the top help desk call categories. SSPR can reduce IT support tickets by 30 to 50 percent in large organizations.",tags:["SSPR enablement","Authentication methods","Group scoping","On-premises writeback"]},
-  guest:{title:"Guest Accounts (B2B)",domain:"Identities & Governance · 20–25%",icon:"🤝",color:"ni-purple",what:"Guest accounts (Azure AD B2B) allow external users from other organizations to access your Azure resources using their own credentials.",how:"Invite an external Gmail account as a guest user. Assign Reader role on rg-monitor only. Configure access review to audit guest access quarterly.",exam:"Guest users have UserType of Guest vs Member. They can be invited via Portal, PowerShell, or bulk CSV. Access reviews help manage guest lifecycle.",corp:"Vendors, contractors, and partners access corporate Azure resources daily as guest users.",tags:["B2B invitation","Guest user type","External access","Access reviews"]},
-  cost:{title:"Cost Management & Budgets",domain:"Identities & Governance · 20–25%",icon:"💰",color:"ni-purple",what:"Azure Cost Management provides spending visibility, cost analysis by resource group, and budget alerts when spending approaches defined thresholds.",how:"Set a $50 monthly budget with alert at 80 and 100 percent thresholds. Review cost analysis breakdown by resource group.",exam:"Budgets trigger alerts but do not stop spending. Cost analysis shows actual vs forecast spend. Tags help allocate costs to teams or projects.",corp:"FinOps is a growing discipline. Every cloud admin is expected to monitor spend, identify waste, and report to finance teams.",tags:["Budget alerts","Cost analysis","Spending thresholds","Cost allocation tags"]},
-  bicep:{title:"Bicep / ARM Templates",domain:"Identities & Governance · 20–25%",icon:"⚡",color:"ni-purple",what:"Bicep is Azure's Infrastructure as Code language — a cleaner syntax over ARM JSON. Templates define resources declaratively so environments can be deployed consistently.",how:"Write a Bicep file that deploys a storage account. Deploy via Azure CLI. Show idempotency by running it twice. Export existing resources as ARM template.",exam:"Bicep compiles to ARM JSON. ARM templates support linked templates and template specs. Both support parameters, variables, and outputs. Idempotent deployments.",corp:"No serious cloud team deploys resources manually via Portal. Bicep or ARM is used for every production deployment to ensure consistency.",tags:["Bicep syntax","ARM templates","Idempotent deployment","Template export","Azure CLI deploy"]},
-  storage:{title:"Storage Account",domain:"Storage · 15–20%",icon:"🗄️",color:"ni-blue",what:"A Storage Account is the foundational Azure storage resource. It hosts blobs, files, queues, and tables. Performance tier and redundancy are set at account level.",how:"Create a Standard LRS storage account in rg-storage. Enable soft delete for blobs 7 days. Enable versioning. Configure firewall to allow only the spoke VNet.",exam:"Redundancy: LRS 3 copies 1 datacenter, ZRS 3 zones, GRS 2 regions, GZRS zone plus geo. Premium storage only supports LRS or ZRS.",corp:"Every Azure workload uses storage. Storage account design decisions directly impact cost and reliability.",tags:["LRS/ZRS/GRS redundancy","Soft delete","Versioning","Storage firewall","Performance tiers"]},
-  blob:{title:"Blob Containers",domain:"Storage · 15–20%",icon:"📦",color:"ni-blue",what:"Blob storage holds unstructured data such as files, images, videos, backups, and logs. Containers organize blobs similar to folders.",how:"Create three containers: raw-data private, public-assets with blob public access, archives private cool tier. Upload sample files to each.",exam:"Three access levels: Private, Blob anonymous read for blobs, Container anonymous read for container and blobs. Block blob is for most files; Page blob for VM disks.",corp:"Application logs, user uploads, media files, and data pipeline inputs all live in blob storage.",tags:["Container access levels","Block vs Page blob","Anonymous access","Blob upload/download"]},
-  tiers:{title:"Access Tiers",domain:"Storage · 15–20%",icon:"📊",color:"ni-blue",what:"Azure Blob Storage has three access tiers: Hot for frequent access, Cool for infrequent with 30 day minimum, and Archive for rare access with 180 day minimum.",how:"Upload files to archives container. Set individual blobs to Hot, Cool, and Archive tiers. Demonstrate rehydration from Archive to Hot.",exam:"Archive blobs cannot be read directly and must rehydrate to Hot or Cool first taking up to 15 hours standard or 1 hour high priority. Early deletion fees apply.",corp:"Organizations store compliance data in Archive tier to dramatically cut costs. Lifecycle policies automate tier transitions based on last access date.",tags:["Hot/Cool/Archive tiers","Rehydration","Early deletion fees","Tier-level setting"]},
-  lifecycle:{title:"Lifecycle Management Policy",domain:"Storage · 15–20%",icon:"♻️",color:"ni-blue",what:"Lifecycle Management policies automatically transition blobs between access tiers or delete them based on age or last access time.",how:"Create a lifecycle policy: move blobs to Cool after 30 days, Archive after 90 days, delete after 365 days. Apply to raw-data container.",exam:"Policies run daily. Conditions based on last modified, last accessed, or creation date. Can filter by container name prefix or blob tag.",corp:"Without lifecycle policies organizations accumulate hot-tier data that should be archived wasting thousands of dollars monthly.",tags:["Tier transitions","Auto-delete","Policy rules","Last access tracking","Cost optimization"]},
-  sas:{title:"Shared Access Signatures",domain:"Storage · 15–20%",icon:"🔗",color:"ni-blue",what:"A SAS token is a URI that grants limited time-bound access to Azure Storage resources without exposing account keys.",how:"Generate a Service SAS for the public-assets container with Read-only permission expiring in 24 hours. Generate via Portal and PowerShell.",exam:"Three types: Account SAS, Service SAS, User delegation SAS which is most secure. Stored access policy allows revocation. Never embed account keys in code.",corp:"Applications share SAS tokens with users for temporary file access such as a download link that expires after 1 hour.",tags:["Service SAS","Account SAS","User delegation SAS","Stored access policy","Expiry and permissions"]},
-  files:{title:"Azure Files",domain:"Storage · 15–20%",icon:"📁",color:"ni-blue",what:"Azure Files provides fully managed SMB and NFS file shares in the cloud mountable by Windows, Linux, and macOS.",how:"Create a file share contoso-share 100 GiB. Mount to the Windows VM via SMB. Upload files through mounted drive.",exam:"SMB 3.0 is the default protocol. Requires port 445 open. Azure File Sync extends on-premises file servers to Azure.",corp:"Azure Files replaces on-premises file servers for organizations moving to the cloud. IT teams map it as a drive for users.",tags:["SMB share","Mount on Windows/Linux","File Sync","Snapshots","Port 445"]},
-  sfirewall:{title:"Storage Firewall",domain:"Storage · 15–20%",icon:"🛡️",color:"ni-blue",what:"The Storage Account firewall restricts access to specific VNets, IP ranges, or Azure services blocking all other traffic by default when enabled.",how:"Enable storage firewall on the storage account. Allow access from spoke-vnet subnet only. Show how direct Portal access is blocked but VNet VM access succeeds.",exam:"Firewall works alongside Private Endpoints. Allow Azure services bypass allows services like Azure Backup to access even when firewall is on.",corp:"Production storage accounts should never be publicly accessible. Firewall plus Private Endpoint is the enterprise standard.",tags:["VNet rules","IP rules","Trusted services bypass","Default deny"]},
-  privateep:{title:"Private Endpoint (Storage)",domain:"Storage · 15–20%",icon:"🔌",color:"ni-blue",what:"A Private Endpoint gives your storage account a private IP address inside your VNet. Traffic never leaves the Microsoft network.",how:"Create a Private Endpoint for the storage account in spoke-vnet subnet-data. Link to a Private DNS Zone. Verify blob access from VM using private IP.",exam:"Private Endpoints use NIC in your subnet. Require Private DNS Zone for name resolution. Different from Service Endpoints which extend VNet identity rather than giving a private IP.",corp:"Every enterprise storage account in production uses Private Endpoints. It is a compliance requirement in healthcare, finance, and government.",tags:["Private IP for storage","Private DNS Zone","NIC in subnet","vs Service Endpoints"]},
-  explorer:{title:"Azure Storage Explorer",domain:"Storage · 15–20%",icon:"🔍",color:"ni-blue",what:"Azure Storage Explorer is a standalone desktop tool for browsing, uploading, and managing Azure Storage resources including blobs, files, queues, and tables.",how:"Connect Storage Explorer to the CloudCanvas storage account using connection string and SAS token. Browse containers, upload files, manage blob tiers.",exam:"Storage Explorer supports connection via account key, SAS token, Entra ID, or connection string. Available as desktop app and in Azure Portal.",corp:"Support teams and developers use Storage Explorer daily for investigating blob contents and downloading logs without writing scripts.",tags:["Connection methods","Blob management","File share access","SAS authentication"]},
-  winvm:{title:"Windows VM",domain:"Compute · 20–25%",icon:"🖥️",color:"ni-teal",what:"An Azure Virtual Machine running Windows Server — a full cloud-based computer with configurable CPU, RAM, disk, and networking.",how:"Deploy a Windows Server 2022 VM Standard_B2s in subnet-admin. No public IP — access only via Bastion. Attach an additional data disk. Install IIS via VM Extension.",exam:"VM size determines CPU and RAM. OS disk and data disk are separate. Deallocated VMs do not incur compute charges but storage charges continue.",corp:"Windows VMs host Active Directory domain controllers, Remote Desktop Services, legacy applications, and management jump boxes.",tags:["VM deployment","VM sizing","OS and data disks","Deallocation vs stop","Windows Server 2022"]},
-  linuxvm:{title:"Linux VM",domain:"Compute · 20–25%",icon:"🐧",color:"ni-teal",what:"An Azure Virtual Machine running Linux commonly used for web servers, development environments, containers, and automation workloads.",how:"Deploy Ubuntu 22.04 LTS VM Standard_B1s in subnet-dev. Use SSH key authentication. Connect via Bastion. Run a custom script extension to install nginx.",exam:"SSH key pairs are the secure auth method for Linux VMs. cloud-init can configure VMs at first boot. Custom Script Extension runs scripts post-deployment.",corp:"Linux VMs power most web servers, API backends, containerized workloads, and DevOps tooling in cloud environments.",tags:["SSH key auth","Ubuntu deployment","cloud-init","Custom Script Extension","Bastion SSH"]},
-  vmss:{title:"VM Scale Sets (VMSS)",domain:"Compute · 20–25%",icon:"📈",color:"ni-teal",what:"VM Scale Sets automatically increase or decrease the number of identical VMs based on demand or a schedule.",how:"Deploy a VMSS with 2 initial instances. Configure autoscale rule: add 1 VM when CPU is above 75 percent for 5 minutes, remove 1 VM when CPU is below 25 percent.",exam:"Uniform vs Flexible orchestration modes. Autoscale uses metrics or schedules. Spot instances can reduce VMSS cost by up to 90 percent.",corp:"E-commerce sites and streaming platforms use VMSS to handle traffic spikes without over-provisioning permanent servers.",tags:["Autoscale rules","Min/max instances","Uniform vs Flexible","Spot instances"]},
-  avset:{title:"Availability Sets",domain:"Compute · 20–25%",icon:"⚖️",color:"ni-teal",what:"Availability Sets protect VMs from single points of failure using fault domains with separate power and network and update domains. Provides 99.95 percent SLA.",how:"Create an availability set with 2 fault domains and 5 update domains. Deploy both Windows and Linux VMs into the set.",exam:"Availability Sets are in the same datacenter on different racks. Availability Zones are in different datacenters in the same region. Managed disks required for fault domain alignment.",corp:"Any production workload requiring high availability uses availability sets or zones to ensure one hardware failure does not take down all VMs.",tags:["Fault domains","Update domains","99.95% SLA","vs Availability Zones"]},
-  ext:{title:"VM Extensions",domain:"Compute · 20–25%",icon:"🔧",color:"ni-teal",what:"VM Extensions are small programs that run post-deployment on Azure VMs to configure software, run scripts, collect diagnostics, or integrate with monitoring tools.",how:"Deploy Custom Script Extension on Linux VM to install nginx. Deploy BGInfo extension on Windows VM. Deploy Log Analytics agent extension on both VMs.",exam:"Common extensions: Custom Script, DSC, Log Analytics agent, Diagnostics, Azure Monitor agent. Extensions run as SYSTEM or root.",corp:"Extensions automate post-deployment configuration at scale instead of manually logging into each VM.",tags:["Custom Script Extension","Log Analytics agent","DSC extension","Azure Monitor agent"]},
-  aci:{title:"Azure Container Instances",domain:"Compute · 20–25%",icon:"📦",color:"ni-teal",what:"ACI runs Docker containers directly in Azure without managing any VMs or orchestration. Just specify the image and resources and it runs. Billed per second.",how:"Deploy a public nginx container in ACI with 1 CPU and 1.5GB RAM. Access via public FQDN. Deploy a second container in the CloudCanvas VNet for private access.",exam:"ACI is serverless containers with no cluster management. Supports Linux and Windows containers. Can attach Azure File Share for persistent storage.",corp:"ACI is used for batch processing jobs, CI/CD pipeline stages, quick API prototypes, and any workload that needs containers without Kubernetes overhead.",tags:["Serverless containers","Public and VNet deployment","Container groups","Per-second billing"]},
-  aca:{title:"Azure Container Apps",domain:"Compute · 20–25%",icon:"🚀",color:"ni-teal",what:"Azure Container Apps is a managed platform built on Kubernetes for running containerized microservices with built-in autoscaling and traffic splitting.",how:"Deploy a simple containerized web API to Container Apps. Configure KEDA-based scaling to scale to zero when no traffic. Set up two revisions with 80/20 traffic split.",exam:"Container Apps vs AKS: ACA is managed and abstracts Kubernetes. AKS gives full Kubernetes control. ACA supports KEDA and can scale to zero.",corp:"Microservices architectures on Azure increasingly use Container Apps as the middle ground between simple ACI and complex AKS.",tags:["KEDA autoscaling","Scale to zero","Traffic splitting","Revisions","Dapr integration"]},
-  appservice:{title:"App Service",domain:"Compute · 20–25%",icon:"🌐",color:"ni-teal",what:"Azure App Service is a fully managed platform for hosting web applications, REST APIs, and mobile backends.",how:"Deploy a free-tier Python Flask web app from GitHub to App Service. Configure deployment slots for production and staging. Demonstrate slot swap.",exam:"App Service Plans define the compute resources. Multiple apps can share one plan. Deployment slots allow blue/green deployments.",corp:"Most web applications and APIs at enterprises run on App Service. It handles SSL, scaling, and patching automatically.",tags:["Deployment slots","Slot swap","Runtime stacks","Scaling","Deployment from GitHub"]},
-  appplan:{title:"App Service Plan",domain:"Compute · 20–25%",icon:"📐",color:"ni-teal",what:"The App Service Plan defines the region, OS, and pricing tier for your App Service apps. Multiple apps can share one plan.",how:"Create a Free-tier F1 App Service Plan for the CloudCanvas web app. Show how plan tier affects features. Scale up to Basic then back down.",exam:"Scaling up means changing plan tier for more CPU and RAM. Scaling out means more instances which requires Standard or above. Free and Shared plans run on shared infrastructure.",corp:"Right-sizing App Service Plans is a common cost optimization. Teams often over-provision.",tags:["Plan tiers F1/B1/S1/P1","Scale up vs scale out","Shared vs dedicated","App Service Environment"]},
-  vnet:{title:"VNet Hub & Spoke",domain:"Virtual Networking · 15–20%",icon:"🌐",color:"ni-amber",what:"The hub-spoke topology is the standard enterprise Azure network pattern. A central hub VNet hosts shared services. Spoke VNets connect via peering and host workloads.",how:"Create hub-vnet 10.0.0.0/16 with subnets for Bastion, admin VMs, and dev VMs. Create spoke-vnet 10.1.0.0/16. Connect via VNet Peering.",exam:"Hub-spoke is the recommended pattern for enterprise Azure. Spokes do not communicate directly. Address spaces cannot overlap between peered VNets.",corp:"Every enterprise Azure deployment uses hub-spoke. Shared services live in the hub. Application workloads are isolated in spokes for security and billing.",tags:["Hub VNet","Spoke VNet","Address space planning","CIDR notation","Enterprise network design"]},
-  subnet:{title:"Subnets",domain:"Virtual Networking · 15–20%",icon:"🔀",color:"ni-amber",what:"Subnets divide a VNet into smaller network segments. Each subnet has its own address range and can have its own NSG and route table.",how:"Create in hub-vnet: AzureBastionSubnet 10.0.0.0/24, subnet-admin 10.0.1.0/24, subnet-dev 10.0.2.0/24. In spoke-vnet: subnet-data 10.1.0.0/24.",exam:"AzureBastionSubnet must be named exactly that with minimum /26. Azure reserves 5 IPs per subnet. Subnets within same VNet can communicate by default.",corp:"Subnet design is one of the first tasks in any Azure deployment. Poor CIDR planning causes address exhaustion.",tags:["CIDR planning","Reserved IPs","AzureBastionSubnet naming","Subnet delegation"]},
-  nsg:{title:"Network Security Groups",domain:"Virtual Networking · 15–20%",icon:"🛡️",color:"ni-amber",what:"NSGs are stateful firewalls applied to subnets or NICs. They contain inbound and outbound rules with priority numbers where lower number means higher priority.",how:"Create NSG for subnet-admin: allow RDP from AzureBastionSubnet only, allow HTTP/HTTPS outbound. Create NSG for subnet-dev: allow SSH from Bastion only.",exam:"Rules evaluated by priority 100 to 4096. Default rules include 65000 AllowVnetInBound and 65500 DenyAllInBound. NSG on both subnet and NIC means both are evaluated.",corp:"NSGs are the primary micro-segmentation tool in Azure. Security teams define NSG rules to implement zero-trust networking.",tags:["Inbound/outbound rules","Priority numbers","Default rules","Subnet vs NIC association","Stateful inspection"]},
-  peering:{title:"VNet Peering",domain:"Virtual Networking · 15–20%",icon:"↔️",color:"ni-amber",what:"VNet Peering connects two VNets so resources can communicate using private IPs. Traffic stays on Microsoft's backbone network.",how:"Create bidirectional peering between hub-vnet and spoke-vnet. Configure Allow forwarded traffic and Allow gateway transit settings.",exam:"Peering is non-transitive. If VNet A peers with B and B peers with C, A cannot reach C. Both directions must be created. No address space overlap allowed.",corp:"Hub-spoke requires peering between hub and each spoke. Global VNet Peering works across Azure regions.",tags:["Bidirectional peering","Non-transitive routing","Global peering","Gateway transit"]},
-  bastion:{title:"Azure Bastion",domain:"Virtual Networking · 15–20%",icon:"🏰",color:"ni-amber",what:"Azure Bastion provides secure RDP/SSH to VMs directly through the browser without exposing VMs to the public internet.",how:"Deploy Azure Bastion Basic SKU in AzureBastionSubnet. Connect to Windows VM via RDP in browser. Connect to Linux VM via SSH in browser.",exam:"Bastion requires AzureBastionSubnet minimum /26. Basic SKU does not support native RDP client. Standard SKU adds native client and shareable links.",corp:"Azure Bastion is the Microsoft-recommended replacement for jump servers and VPN-based RDP access. It eliminates the attack surface of exposed RDP and SSH ports.",tags:["Browser-based RDP/SSH","No public IP on VMs","Basic vs Standard SKU","Zero-trust access"]},
-  dns:{title:"Private DNS Zone",domain:"Virtual Networking · 15–20%",icon:"📡",color:"ni-amber",what:"Private DNS Zones provide name resolution for resources within Azure VNets using custom domain names without exposing DNS records publicly.",how:"Create Private DNS Zone cloudcanvas.internal. Link to hub-vnet with auto-registration enabled. Verify Windows VM registers its hostname automatically.",exam:"VNet links enable DNS resolution in that VNet. Auto-registration automatically registers VM hostnames. Private endpoint DNS zones must use the privatelink naming convention.",corp:"Private DNS is used for service discovery, private endpoint resolution, and internal naming conventions.",tags:["VNet link","Auto-registration","Private endpoint DNS","privatelink zones"]},
-  udr:{title:"User Defined Routes",domain:"Virtual Networking · 15–20%",icon:"🗺️",color:"ni-amber",what:"UDRs or route tables override Azure's default routing to force traffic through a specific next hop such as a firewall NVA or VPN gateway.",how:"Create a route table for subnet-data in spoke-vnet. Add a route with destination 0.0.0.0/0 and next hop as hub VNet IP. Show effective routes on VM NIC.",exam:"Next hop types: VirtualAppliance, VirtualNetworkGateway, VnetLocal, Internet, None. UDRs override system routes.",corp:"Enterprises force all internet-bound traffic through Azure Firewall using UDRs — a security requirement for inspecting outbound connections.",tags:["Route tables","Next hop types","NVA routing","Effective routes","Default route override"]},
-  sep:{title:"Service Endpoints",domain:"Virtual Networking · 15–20%",icon:"📶",color:"ni-amber",what:"Service Endpoints extend your VNet identity to Azure PaaS services over the Azure backbone. Traffic stays on Microsoft network without using public IPs.",how:"Enable Storage Service Endpoint on subnet-data in spoke-vnet. Update storage account firewall to allow spoke-vnet.",exam:"Service Endpoints vs Private Endpoints: Service EP extends VNet route to service. Private EP gives the service a private IP in your VNet. Private EP is more secure.",corp:"Service Endpoints are a lighter-weight alternative to Private Endpoints — easier to configure but less secure.",tags:["VNet extension to PaaS","Storage service endpoint","vs Private Endpoint","Firewall integration"]},
-  lb:{title:"Load Balancer",domain:"Virtual Networking · 15–20%",icon:"⚖️",color:"ni-amber",what:"Azure Load Balancer distributes inbound traffic across multiple backend VMs using Layer 4 TCP/UDP load balancing rules.",how:"Deploy an internal Standard Load Balancer in subnet-admin. Add both VMs as backend pool members. Create a health probe on port 80.",exam:"Load Balancer vs Application Gateway: LB is Layer 4 for IP and port, App Gateway is Layer 7 for HTTP and HTTPS. Internal LB has private frontend IP; Public LB has public IP.",corp:"Any multi-VM web or API tier uses a load balancer to distribute traffic and eliminate single points of failure.",tags:["Backend pool","Health probes","Load balancing rules","Internal vs Public","Layer 4"]},
-  vpngw:{title:"VPN Gateway",domain:"Virtual Networking · 15–20%",icon:"🌉",color:"ni-amber",what:"VPN Gateway creates encrypted IPsec/IKE tunnels between Azure VNets and on-premises networks via Site-to-Site or individual clients via Point-to-Site.",how:"Documented with architecture diagram. VPN Gateway costs over $140 per month so we document the config steps and demonstrate Point-to-Site certificate setup.",exam:"Gateway SKUs: Basic, VpnGw1 through VpnGw5 with increasing throughput. S2S requires on-prem VPN device. P2S uses certificate or Entra ID auth.",corp:"Hybrid organizations connect Azure to datacenters via VPN Gateway or ExpressRoute. Government often mandates ExpressRoute for compliance.",tags:["Site-to-Site VPN","Point-to-Site VPN","Local Network Gateway","IPsec/IKE","Gateway SKUs"]},
-  appgw:{title:"Application Gateway",domain:"Virtual Networking · 15–20%",icon:"🚧",color:"ni-amber",what:"Application Gateway is a Layer 7 load balancer with URL-based routing, SSL termination, session affinity, and optional Web Application Firewall.",how:"Documented with architecture diagram. App Gateway cost means we document WAF policy configuration and URL path-based routing rules with screenshots.",exam:"App Gateway vs Azure Front Door: App Gateway is regional; Front Door is global. WAF policies protect against OWASP Top 10.",corp:"Every public-facing web application in enterprise Azure sits behind Application Gateway with WAF enabled.",tags:["Layer 7 routing","URL path routing","SSL termination","WAF policy","Session affinity"]},
-  nw:{title:"Network Watcher",domain:"Virtual Networking · 15–20%",icon:"👁️",color:"ni-amber",what:"Network Watcher provides network monitoring and diagnostic tools including IP flow verify, connection troubleshoot, packet capture, and topology visualization.",how:"Run IP Flow Verify between Windows VM and spoke-vnet storage. Run Connection Troubleshoot from Linux VM to internet. Capture topology diagram.",exam:"Key tools: IP Flow Verify tests if NSG allows specific flow, Connection Troubleshoot for end-to-end connectivity, Packet Capture, NSG Flow Logs.",corp:"Network Watcher is the first tool Azure admins use when diagnosing connectivity issues. IP Flow Verify instantly tells you if an NSG is blocking traffic.",tags:["IP Flow Verify","Connection Troubleshoot","Packet Capture","NSG Flow Logs","Topology view"]},
-  monitor:{title:"Azure Monitor",domain:"Monitor & Maintain · 10–15%",icon:"💓",color:"ni-green",what:"Azure Monitor is the central platform for collecting, analyzing, and acting on telemetry from Azure resources including metrics, logs, traces, and changes.",how:"Enable Azure Monitor on both VMs. View CPU, memory, disk, and network metrics in the Metrics Explorer. Create a custom dashboard pinning key charts.",exam:"Metrics are numeric time-series data stored for 93 days. Logs are structured query-able data in Log Analytics. Azure Monitor is the umbrella service.",corp:"Azure Monitor is always-on for production environments. SRE and ops teams build dashboards showing real-time health of all services.",tags:["Metrics Explorer","Platform metrics","Custom dashboards","93-day retention"]},
-  law:{title:"Log Analytics Workspace",domain:"Monitor & Maintain · 10–15%",icon:"📟",color:"ni-green",what:"Log Analytics Workspace is the central repository for log data in Azure. Resources send their logs here and you query them using KQL.",how:"Create a Log Analytics Workspace in rg-monitor. Connect both VMs via Azure Monitor Agent. Write KQL queries to find failed logins and show top CPU processes.",exam:"KQL is the query language. Common tables: Heartbeat, Event, Syslog, Perf, AzureActivity. Workspace retention default is 30 days.",corp:"Log Analytics is the foundation of security monitoring. Microsoft Sentinel uses it. KQL is a valuable skill used daily by Azure ops teams.",tags:["KQL queries","Log tables","Azure Monitor Agent","Heartbeat","30-day default retention"]},
-  diag:{title:"Diagnostic Settings",domain:"Monitor & Maintain · 10–15%",icon:"⚙️",color:"ni-green",what:"Diagnostic Settings configure where a resource sends its platform logs and metrics to destinations like Log Analytics Workspace, Storage Account, or Event Hub.",how:"Configure Diagnostic Settings on hub-vnet NSG to send NSG Flow Logs to storage. Configure VM diagnostic settings to send guest OS metrics to Log Analytics.",exam:"Each resource can have multiple diagnostic settings. Activity Log captures subscription-level events. Resource logs show resource-internal operations.",corp:"Diagnostic settings are configured during resource deployment in enterprise environments. Compliance teams require specific logs for audit purposes.",tags:["Platform logs","Resource logs","Activity Log","Destinations","NSG Flow Logs"]},
-  alerts:{title:"Alerts & Action Groups",domain:"Monitor & Maintain · 10–15%",icon:"🔔",color:"ni-green",what:"Azure Monitor Alerts trigger notifications or automated actions when metrics or log conditions are met. Action Groups define who gets notified.",how:"Create metric alert: CPU above 80 percent on Windows VM for Action Group email. Create log alert: failed SSH attempts on Linux VM for email notification.",exam:"Alert types: Metric near real-time, Log runs KQL query on schedule, Activity Log for subscription events. Alert states: Fired and Resolved.",corp:"On-call engineers receive PagerDuty or Teams alerts triggered by Azure Monitor. Alert tuning is an ongoing operational task.",tags:["Metric alerts","Log alerts","Activity Log alerts","Action Groups","Email/SMS/webhook"]},
-  vminsights:{title:"VM Insights",domain:"Monitor & Maintain · 10–15%",icon:"📈",color:"ni-green",what:"VM Insights provides performance charts, dependency maps, and trend analysis for Azure VMs built on Log Analytics and Azure Monitor.",how:"Enable VM Insights on both VMs. Explore the Performance tab. View the Map tab showing network connections from VMs to storage and external endpoints.",exam:"VM Insights requires Azure Monitor Agent. The Map feature uses Dependency Agent. Shows top N processes by CPU and memory.",corp:"VM Insights provides the dependency map showing exactly what each VM is talking to. Invaluable during incident investigation.",tags:["Performance charts","Dependency Map","Azure Monitor Agent","Dependency Agent","Process monitoring"]},
-  vault:{title:"Recovery Services Vault",domain:"Monitor & Maintain · 10–15%",icon:"🔐",color:"ni-green",what:"Recovery Services Vault is the storage container for Azure Backup and Azure Site Recovery data. It stores backup items, recovery points, and replication data.",how:"Create Recovery Services Vault in rg-monitor with GRS redundancy. Enable VM backup for Windows VM. Enable Azure Files backup for the file share.",exam:"Vault redundancy LRS/ZRS/GRS determines how backup data is replicated. Change before adding items not after. Soft delete retains deleted backups for 14 days.",corp:"Every production VM must have backup configured. Compliance requirements often mandate specific retention periods.",tags:["Vault redundancy","Protected items","Soft delete","Immutable vault","Azure Site Recovery"]},
-  backup:{title:"Backup Policy",domain:"Monitor & Maintain · 10–15%",icon:"☁️",color:"ni-green",what:"Backup Policies define the schedule such as daily or weekly and retention rules for how many recovery points to keep.",how:"Create a custom backup policy: daily backup at 2am UTC, retain daily points for 7 days, weekly for 4 weeks, monthly for 12 months. Apply to Windows VM.",exam:"Default policy: daily at 9:30pm UTC with 30-day retention. Enhanced policy supports hourly backups. Retention granularity: Daily, Weekly, Monthly, Yearly.",corp:"Backup policy design aligns to business RPO requirements. Financial systems may require hourly backups while dev servers might only need weekly.",tags:["Backup schedule","Retention rules","Daily/weekly/monthly points","Enhanced policy","RPO alignment"]},
-  restore:{title:"File-Level Restore",domain:"Monitor & Maintain · 10–15%",icon:"⬇️",color:"ni-green",what:"Azure Backup supports restoring individual files from a VM backup without restoring the entire VM by mounting the recovery point as a disk.",how:"From a Windows VM recovery point click File Recovery. Download and run the mount script on the VM. Browse the mounted recovery point drive and recover a specific file.",exam:"File recovery mounts the recovery point as an iSCSI disk. Script is valid for 12 hours. Full VM restore options: Create new VM, Restore disk, or Replace existing VM.",corp:"Users accidentally delete files regularly. File-level restore from VM backup resolves this in minutes without restoring the entire VM.",tags:["File Recovery","Mount script","Recovery point browsing","Full VM restore options"]},
-  advisor:{title:"Azure Advisor",domain:"Monitor & Maintain · 10–15%",icon:"💡",color:"ni-green",what:"Azure Advisor is a free personalized cloud consultant that analyzes your Azure resources and recommends improvements across five pillars.",how:"Open Advisor for the CloudCanvas subscription. Review all recommendation categories. Implement a cost recommendation. Screenshot the Advisor score before and after.",exam:"Five categories: Cost, Security, Reliability, Performance, Operational Excellence. Advisor score aggregates all recommendations. Can snooze or dismiss recommendations.",corp:"Cloud architects review Advisor recommendations weekly. Cost recommendations can identify thousands in monthly savings.",tags:["Five pillars","Advisor score","Cost recommendations","Security recommendations","Snooze/dismiss"]}
+  rbac:{title:"RBAC Roles",domain:"Identities & Governance · 20–25%",icon:"🔑",color:"ni-purple",what:"Role-Based Access Control (RBAC) controls who can do what on which Azure resources. Roles are assigned at management group, subscription, resource group, or resource scope.",how:"Assign Owner to IT-Admins at subscription scope. Assign Contributor to Developers at rg-compute. Assign Reader to Finance at rg-monitor. Create one custom role.",exam:"Roles are inherited down the scope hierarchy. Owner is above Contributor which is above Reader. Custom roles require JSON definition. Deny assignments override allow.",corp:"Least-privilege access is a security requirement in every enterprise. Azure admins spend significant time managing RBAC as teams grow.",tags:["Assign roles","Scope levels","Custom roles","Least privilege","Inheritance model"]},
+  policy:{title:"Azure Policy",domain:"Identities & Governance · 20–25%",icon:"📋",color:"ni-purple",what:"Azure Policy enforces organizational rules across your environment automatically. It can audit, deny, or auto-remediate non-compliant resources.",how:"Create a policy requiring all resources to have a Project CloudCanvas tag. Create a second policy denying expensive VM SKUs. Assign at subscription scope.",exam:"Policy is not RBAC. Policy controls what can be deployed; RBAC controls who can deploy it. Initiatives are groups of policies. DeployIfNotExists can auto-remediate.",corp:"Enterprises use Policy to enforce tagging standards, restrict regions, require encryption, and ensure compliance with ISO 27001 and SOC 2.",tags:["Policy definition","Policy assignment","Initiatives","Compliance dashboard","DeployIfNotExists"]},
+  locks:{title:"Resource Locks",domain:"Identities & Governance · 20–25%",icon:"🔒",color:"ni-purple",what:"Resource Locks prevent accidental deletion or modification of critical Azure resources. Two types: ReadOnly and CanNotDelete.",how:"Apply a CanNotDelete lock on the Recovery Services Vault and production storage account. Apply ReadOnly on the hub VNet.",exam:"Locks apply to all users including Owners. CanNotDelete still allows modification. ReadOnly prevents both modification and deletion. Locks are inherited by child resources.",corp:"Production databases, vaults, and network infrastructure always have locks applied. A single accidental delete can bring down services for thousands of users.",tags:["CanNotDelete","ReadOnly lock","Lock inheritance","Scope application"]},
+  mgmt:{title:"Management Groups",domain:"Identities & Governance · 20–25%",icon:"🏢",color:"ni-purple",what:"Management Groups organize multiple subscriptions under a hierarchy. Policies and RBAC assigned at the management group level apply to all subscriptions beneath it.",how:"Create a root management group CloudCanvas-Root with two child groups: Production and Dev-Test. Place the subscription under Production.",exam:"Up to 6 levels of hierarchy excluding root. Root group cannot be moved or deleted. A subscription can only be in one management group at a time.",corp:"Large enterprises with dozens of subscriptions use management groups to enforce governance centrally — one policy cascades across hundreds of resources.",tags:["Hierarchy","Policy inheritance","Subscription organization","Root management group"]},
+  sspr:{title:"Self-Service Password Reset",domain:"Identities & Governance · 20–25%",icon:"🔄",color:"ni-purple",what:"SSPR allows users to reset their own passwords without calling the help desk. Requires authentication methods like phone, email, or authenticator app.",how:"Enable SSPR for the Developers group. Configure two authentication methods required. Test the reset flow with a test user account.",exam:"SSPR requires Entra ID P1 or P2 for on-premises writeback. You can enable for All users or Selected groups. Authentication methods are configured separately from MFA.",corp:"Password resets are one of the top help desk call categories. SSPR can reduce IT support tickets by 30 to 50 percent in large organizations.",tags:["SSPR enablement","Authentication methods","Group scoping","On-premises writeback"]},
+  guest:{title:"Guest Accounts (B2B)",domain:"Identities & Governance · 20–25%",icon:"🤝",color:"ni-purple",what:"Guest accounts allow external users from other organizations to access your Azure resources using their own credentials.",how:"Invite an external Gmail account as a guest user. Assign Reader role on rg-monitor only. Configure access review to audit guest access quarterly.",exam:"Guest users have UserType of Guest versus Member. They can be invited via Portal, PowerShell, or bulk CSV. Access reviews help manage guest lifecycle.",corp:"Vendors, contractors, and partners access corporate Azure resources daily as guest users. Managing their access lifecycle is a real administrative responsibility.",tags:["B2B invitation","Guest user type","External access","Access reviews"]},
+  cost:{title:"Cost Management & Budgets",domain:"Identities & Governance · 20–25%",icon:"💰",color:"ni-purple",what:"Azure Cost Management provides spending visibility, cost analysis by resource group, and budget alerts when spending approaches defined thresholds.",how:"Set a $50 monthly budget with alert at 80 and 100 percent thresholds. Review cost analysis breakdown by resource group. Export cost report.",exam:"Budgets trigger alerts but do not stop spending. Cost analysis shows actual versus forecast spend. Tags help allocate costs to teams or projects.",corp:"FinOps is a growing discipline. Every cloud admin is expected to monitor spend, identify waste, and report to finance teams.",tags:["Budget alerts","Cost analysis","Spending thresholds","Cost allocation tags"]},
+  bicep:{title:"Bicep / ARM Templates",domain:"Identities & Governance · 20–25%",icon:"⚡",color:"ni-purple",what:"Bicep is Azure's Infrastructure as Code language — a cleaner syntax over ARM JSON. Templates define resources declaratively so environments can be deployed consistently.",how:"Write a Bicep file that deploys a storage account. Deploy via Azure CLI. Show idempotency by running it twice. Export existing resources as ARM template.",exam:"Bicep compiles to ARM JSON. ARM templates support linked templates and template specs. Both support parameters, variables, and outputs. Deployments are idempotent.",corp:"No serious cloud team deploys resources manually via Portal. Bicep or ARM is used for every production deployment to ensure consistency and auditability.",tags:["Bicep syntax","ARM templates","Idempotent deployment","Template export","Azure CLI deploy"]},
+  storage:{title:"Storage Account",domain:"Storage · 15–20%",icon:"🗄️",color:"ni-blue",what:"A Storage Account is the foundational Azure storage resource. It hosts blobs, files, queues, and tables. Performance tier and redundancy are set at account level.",how:"Create a Standard LRS storage account in rg-storage. Enable soft delete for blobs 7 days. Enable versioning. Configure firewall to allow only the spoke VNet.",exam:"Redundancy options: LRS for 3 copies in 1 datacenter, ZRS for 3 zones, GRS for 2 regions, GZRS for zone plus geo. Premium storage only supports LRS or ZRS.",corp:"Every Azure workload uses storage — VM disks, app data, logs, backups. Storage account design decisions directly impact cost and reliability.",tags:["LRS/ZRS/GRS redundancy","Soft delete","Versioning","Storage firewall","Performance tiers"]},
+  blob:{title:"Blob Containers",domain:"Storage · 15–20%",icon:"📦",color:"ni-blue",what:"Blob storage holds unstructured data such as files, images, videos, backups, and logs. Containers organize blobs similar to folders.",how:"Create three containers: raw-data private, public-assets with blob public access, archives private cool tier. Upload sample files to each.",exam:"Three access levels: Private, Blob for anonymous read of blobs only, Container for anonymous read of container and blobs. Block blob is for most files; Page blob for VM disks.",corp:"Application logs, user uploads, media files, and data pipeline inputs all live in blob storage. Access level misconfiguration is a common security finding in cloud audits.",tags:["Container access levels","Block vs Page blob","Anonymous access","Blob upload/download"]},
+  tiers:{title:"Access Tiers",domain:"Storage · 15–20%",icon:"📊",color:"ni-blue",what:"Azure Blob Storage has three access tiers: Hot for frequent access, Cool for infrequent access with 30 day minimum, and Archive for rare access with 180 day minimum and required rehydration.",how:"Upload files to archives container. Set individual blobs to Hot, Cool, and Archive tiers. Demonstrate rehydration from Archive to Hot.",exam:"Archive blobs cannot be read directly and must rehydrate to Hot or Cool first. Standard priority takes up to 15 hours; high priority takes up to 1 hour. Early deletion fees apply.",corp:"Organizations store compliance data in Archive tier to dramatically cut costs. Lifecycle policies automate tier transitions based on last access date.",tags:["Hot/Cool/Archive tiers","Rehydration","Early deletion fees","Tier-level setting"]},
+  lifecycle:{title:"Lifecycle Management Policy",domain:"Storage · 15–20%",icon:"♻️",color:"ni-blue",what:"Lifecycle Management policies automatically transition blobs between access tiers or delete them based on age or last access time.",how:"Create a lifecycle policy: move blobs to Cool after 30 days, Archive after 90 days, delete after 365 days. Apply to raw-data container.",exam:"Policies run daily. Conditions based on last modified, last accessed, or creation date. Can filter by container name prefix or blob tag.",corp:"Without lifecycle policies organizations accumulate hot-tier data that should be archived, wasting thousands of dollars monthly. This is a common FinOps quick win.",tags:["Tier transitions","Auto-delete","Policy rules","Last access tracking","Cost optimization"]},
+  sas:{title:"Shared Access Signatures",domain:"Storage · 15–20%",icon:"🔗",color:"ni-blue",what:"A SAS token is a URI that grants limited time-bound access to Azure Storage resources without exposing account keys.",how:"Generate a Service SAS for the public-assets container with Read-only permission expiring in 24 hours. Generate via Portal and PowerShell.",exam:"Three types: Account SAS, Service SAS, User delegation SAS which is most secure. Stored access policy allows revocation. Never embed account keys in code.",corp:"Applications share SAS tokens with users for temporary file access such as a download link that expires after 1 hour. Key rotation and SAS expiry are security requirements.",tags:["Service SAS","Account SAS","User delegation SAS","Stored access policy","Expiry and permissions"]},
+  files:{title:"Azure Files",domain:"Storage · 15–20%",icon:"📁",color:"ni-blue",what:"Azure Files provides fully managed SMB and NFS file shares in the cloud mountable by Windows, Linux, and macOS — just like a network drive.",how:"Create a file share contoso-share at 100 GiB Standard. Mount to the Windows VM via SMB using the net use command. Upload files through the mounted drive.",exam:"SMB 3.0 is the default protocol. Requires port 445 open which some ISPs block. Azure File Sync extends on-premises file servers to Azure. Snapshots provide point-in-time recovery.",corp:"Azure Files replaces on-premises file servers for organizations moving to the cloud. IT teams map it as a drive for users and use File Sync for hybrid scenarios.",tags:["SMB share","Mount on Windows/Linux","File Sync","Snapshots","Port 445"]},
+  sfirewall:{title:"Storage Firewall",domain:"Storage · 15–20%",icon:"🛡️",color:"ni-blue",what:"The Storage Account firewall restricts access to specific VNets, IP ranges, or Azure services — blocking all other traffic by default when enabled.",how:"Enable storage firewall on the storage account. Allow access from spoke-vnet subnet only. Show how direct Portal access is blocked but VNet-based VM access succeeds.",exam:"Firewall works alongside Private Endpoints. The Allow Azure services bypass allows services like Azure Backup to access even when the firewall is on.",corp:"Production storage accounts should never be publicly accessible. Firewall plus Private Endpoint is the enterprise standard for securing storage.",tags:["VNet rules","IP rules","Trusted services bypass","Default deny","Private endpoint integration"]},
+  privateep:{title:"Private Endpoint (Storage)",domain:"Storage · 15–20%",icon:"🔌",color:"ni-blue",what:"A Private Endpoint gives your storage account a private IP address inside your VNet so traffic never leaves the Microsoft network.",how:"Create a Private Endpoint for the storage account in spoke-vnet subnet-data. Link to a Private DNS Zone. Verify blob access from VM using private IP.",exam:"Private Endpoints use a NIC in your subnet. They require a Private DNS Zone for name resolution to work correctly. Different from Service Endpoints which extend VNet identity.",corp:"Every enterprise storage account in production uses Private Endpoints. It is a compliance requirement in healthcare, finance, and government environments.",tags:["Private IP for storage","Private DNS Zone","NIC in subnet","vs Service Endpoints"]},
+  explorer:{title:"Azure Storage Explorer",domain:"Storage · 15–20%",icon:"🔍",color:"ni-blue",what:"Azure Storage Explorer is a standalone desktop tool for browsing, uploading, and managing Azure Storage resources.",how:"Connect Storage Explorer to the CloudCanvas storage account using connection string and SAS token. Browse containers, upload files, manage blob tiers.",exam:"Storage Explorer supports connection via account key, SAS token, Entra ID, or connection string. Available as a desktop app and in Azure Portal.",corp:"Support teams and developers use Storage Explorer daily for investigating blob contents and downloading logs without writing scripts.",tags:["Connection methods","Blob management","File share access","SAS authentication"]},
+  winvm:{title:"Windows VM",domain:"Compute · 20–25%",icon:"🖥️",color:"ni-teal",what:"An Azure Virtual Machine running Windows Server — a full cloud-based computer with configurable CPU, RAM, disk, and networking.",how:"Deploy a Windows Server 2022 VM Standard_B2s in subnet-admin. No public IP — access only via Bastion. Attach an additional data disk. Install IIS via VM Extension.",exam:"VM size determines CPU and RAM. OS disk and data disk are separate. Deallocated VMs do not incur compute charges but storage charges continue. Resize requires deallocating the VM.",corp:"Windows VMs host Active Directory domain controllers, Remote Desktop Services, legacy applications, and management jump boxes in enterprise environments.",tags:["VM deployment","VM sizing","OS and data disks","Deallocation vs stop","Windows Server 2022"]},
+  linuxvm:{title:"Linux VM",domain:"Compute · 20–25%",icon:"🐧",color:"ni-teal",what:"An Azure Virtual Machine running Linux — commonly used for web servers, development environments, containers, and automation workloads.",how:"Deploy Ubuntu 22.04 LTS VM Standard_B1s in subnet-dev. Use SSH key authentication with no password. Connect via Bastion. Run a custom script extension to install nginx.",exam:"SSH key pairs are the secure auth method for Linux VMs. cloud-init can configure VMs at first boot. Custom Script Extension runs scripts post-deployment.",corp:"Linux VMs power most web servers, API backends, containerized workloads, and DevOps tooling in cloud environments. SSH key management is a critical security practice.",tags:["SSH key auth","Ubuntu deployment","cloud-init","Custom Script Extension","Bastion SSH"]},
+  vmss:{title:"VM Scale Sets (VMSS)",domain:"Compute · 20–25%",icon:"📈",color:"ni-teal",what:"VM Scale Sets automatically increase or decrease the number of identical VMs based on demand or a schedule — enabling elastic scaling without manual intervention.",how:"Deploy a VMSS with 2 initial instances. Configure autoscale rule: add 1 VM when CPU is above 75 percent for 5 minutes, remove 1 VM when CPU is below 25 percent.",exam:"Uniform versus Flexible orchestration modes. Autoscale uses metrics or schedules. Spot instances can reduce VMSS cost by up to 90 percent.",corp:"E-commerce sites, streaming platforms, and any variable-load application use VMSS to handle traffic spikes without over-provisioning permanent servers.",tags:["Autoscale rules","Min/max instances","Uniform vs Flexible","Spot instances","Scale-in/out"]},
+  avset:{title:"Availability Sets",domain:"Compute · 20–25%",icon:"⚖️",color:"ni-teal",what:"Availability Sets protect VMs from single points of failure using fault domains with separate power and network and update domains for separate maintenance windows. Provides 99.95 percent SLA.",how:"Create an availability set with 2 fault domains and 5 update domains. Deploy both Windows and Linux VMs into the set. Show fault domain assignments in Portal.",exam:"Availability Sets are in the same datacenter on different racks. Availability Zones are in different datacenters in the same region. Managed disks are required for fault domain alignment.",corp:"Any production workload requiring high availability uses availability sets or zones to ensure one hardware failure does not take down all VMs simultaneously.",tags:["Fault domains","Update domains","99.95% SLA","vs Availability Zones"]},
+  ext:{title:"VM Extensions",domain:"Compute · 20–25%",icon:"🔧",color:"ni-teal",what:"VM Extensions are small programs that run post-deployment on Azure VMs to configure software, run scripts, collect diagnostics, or integrate with monitoring tools.",how:"Deploy Custom Script Extension on Linux VM to install nginx. Deploy BGInfo extension on Windows VM to display system info on desktop. Deploy Log Analytics agent on both VMs.",exam:"Common extensions: Custom Script for running scripts, DSC for desired state config, Log Analytics agent, Diagnostics, and Azure Monitor agent. Extensions run as SYSTEM or root.",corp:"Extensions automate post-deployment configuration at scale — instead of manually logging into each VM, enterprises push configurations to thousands of VMs via extension deployment.",tags:["Custom Script Extension","Log Analytics agent","DSC extension","Azure Monitor agent","BGInfo"]},
+  aci:{title:"Azure Container Instances",domain:"Compute · 20–25%",icon:"📦",color:"ni-teal",what:"ACI runs Docker containers directly in Azure without managing any VMs or orchestration. Just specify the image and resources and it runs. Billed per second.",how:"Deploy a public nginx container in ACI with 1 CPU and 1.5GB RAM. Access via public FQDN. Deploy a second container in the CloudCanvas VNet for private access.",exam:"ACI is serverless containers with no cluster management. Supports Linux and Windows containers. Can attach Azure File Share for persistent storage. Used for short-lived tasks.",corp:"ACI is used for batch processing jobs, CI/CD pipeline stages, quick API prototypes, and any workload that needs containers without the overhead of managing Kubernetes.",tags:["Serverless containers","Public and VNet deployment","Container groups","Persistent storage","Per-second billing"]},
+  aca:{title:"Azure Container Apps",domain:"Compute · 20–25%",icon:"🚀",color:"ni-teal",what:"Azure Container Apps is a managed platform built on Kubernetes for running containerized microservices with built-in autoscaling, traffic splitting, and Dapr integration.",how:"Deploy a simple containerized web API to Container Apps. Configure KEDA-based scaling to scale to zero when no traffic. Set up two revisions with 80/20 traffic split.",exam:"Container Apps versus AKS: ACA is managed and abstracts Kubernetes while AKS gives full Kubernetes control. ACA supports KEDA event-driven autoscaling and can scale to zero.",corp:"Microservices architectures on Azure increasingly use Container Apps as the middle ground between simple ACI and complex AKS — managed Kubernetes without the operational overhead.",tags:["KEDA autoscaling","Scale to zero","Traffic splitting","Revisions","Dapr integration"]},
+  appservice:{title:"App Service",domain:"Compute · 20–25%",icon:"🌐",color:"ni-teal",what:"Azure App Service is a fully managed platform for hosting web applications, REST APIs, and mobile backends. Supports .NET, Node.js, Python, PHP, Java, and containers.",how:"Deploy a free-tier Python Flask web app from GitHub to App Service. Configure deployment slots for production and staging. Demonstrate slot swap. Enable App Service Logs.",exam:"App Service Plans define the compute resources. Multiple apps can share one plan. Deployment slots allow blue/green deployments. Free and Shared tiers do not support custom domains or SSL.",corp:"Most web applications and APIs at enterprises run on App Service — it handles SSL, scaling, and patching automatically while developers focus on code.",tags:["Deployment slots","Slot swap","Runtime stacks","Scaling","Deployment from GitHub"]},
+  appplan:{title:"App Service Plan",domain:"Compute · 20–25%",icon:"📐",color:"ni-teal",what:"The App Service Plan defines the region, OS, and pricing tier for your App Service apps. Multiple apps can share one plan, sharing the same underlying compute resources.",how:"Create a Free-tier F1 App Service Plan for the CloudCanvas web app. Show how plan tier affects features. Scale up to Basic then back down.",exam:"Scaling up means changing plan tier for more CPU and RAM. Scaling out means more instances which requires Standard or above. Free and Shared plans run on shared infrastructure.",corp:"Right-sizing App Service Plans is a common cost optimization — teams often over-provision. Understanding when to scale up versus out is an essential admin skill.",tags:["Plan tiers F1/B1/S1/P1","Scale up vs scale out","Shared vs dedicated","App Service Environment"]},
+  vnet:{title:"VNet Hub & Spoke",domain:"Virtual Networking · 15–20%",icon:"🌐",color:"ni-amber",what:"The hub-spoke topology is the standard enterprise Azure network pattern. A central hub VNet hosts shared services while spoke VNets connect via peering and host workloads.",how:"Create hub-vnet 10.0.0.0/16 with subnets for Bastion, admin VMs, and dev VMs. Create spoke-vnet 10.1.0.0/16. Connect via VNet Peering.",exam:"Hub-spoke is the recommended pattern for enterprise Azure. Spokes do not communicate directly — traffic routes through the hub. Address spaces cannot overlap between peered VNets.",corp:"Every enterprise Azure deployment uses hub-spoke. Shared services live in the hub. Application workloads are isolated in spokes for security and billing separation.",tags:["Hub VNet","Spoke VNet","Address space planning","CIDR notation","Enterprise network design"]},
+  subnet:{title:"Subnets",domain:"Virtual Networking · 15–20%",icon:"🔀",color:"ni-amber",what:"Subnets divide a VNet into smaller network segments. Each subnet has its own address range and can have its own NSG and route table.",how:"Create in hub-vnet: AzureBastionSubnet 10.0.0.0/24, subnet-admin 10.0.1.0/24, subnet-dev 10.0.2.0/24. In spoke-vnet: subnet-data 10.1.0.0/24.",exam:"AzureBastionSubnet must be named exactly that with minimum /26. Azure reserves 5 IPs per subnet (first 4 plus last). Subnets within same VNet can communicate by default unless NSG blocks.",corp:"Subnet design is one of the first tasks in any Azure deployment. Poor CIDR planning causes address exhaustion and requires VNet recreation — plan generously from the start.",tags:["CIDR planning","Reserved IPs","AzureBastionSubnet naming","Subnet delegation"]},
+  nsg:{title:"Network Security Groups",domain:"Virtual Networking · 15–20%",icon:"🛡️",color:"ni-amber",what:"NSGs are stateful firewalls applied to subnets or NICs. They contain inbound and outbound rules with priority numbers where lower number means higher priority.",how:"Create NSG for subnet-admin: allow RDP from AzureBastionSubnet only, deny from internet, allow HTTP/HTTPS outbound. Create NSG for subnet-dev: allow SSH from Bastion only.",exam:"Rules evaluated by priority 100 to 4096. Default rules: 65000 AllowVnetInBound, 65001 AllowAzureLoadBalancerInBound, 65500 DenyAllInBound. NSG on both subnet and NIC means both are evaluated.",corp:"NSGs are the primary micro-segmentation tool in Azure. Security teams define NSG rules to implement zero-trust networking — no implicit trust between subnets.",tags:["Inbound/outbound rules","Priority numbers","Default rules","Subnet vs NIC association","Stateful inspection"]},
+  peering:{title:"VNet Peering",domain:"Virtual Networking · 15–20%",icon:"↔️",color:"ni-amber",what:"VNet Peering connects two VNets so resources can communicate using private IPs. Traffic stays on Microsoft's backbone network and never touches the public internet.",how:"Create bidirectional peering between hub-vnet and spoke-vnet. Configure Allow forwarded traffic and Allow gateway transit settings. Verify connectivity between VMs.",exam:"Peering is non-transitive. If VNet A peers with B and B peers with C, A cannot reach C through B. Both directions must be created. No address space overlap allowed.",corp:"Hub-spoke requires peering between hub and each spoke. Global VNet Peering works across Azure regions. Transitive routing requires Azure Firewall or NVA in the hub.",tags:["Bidirectional peering","Non-transitive routing","Global peering","Gateway transit","Forwarded traffic"]},
+  bastion:{title:"Azure Bastion",domain:"Virtual Networking · 15–20%",icon:"🏰",color:"ni-amber",what:"Azure Bastion provides secure RDP and SSH to VMs directly through the browser — without exposing VMs to the public internet via public IPs or open RDP/SSH ports.",how:"Deploy Azure Bastion Basic SKU in AzureBastionSubnet with a public IP. Connect to Windows VM via RDP in browser. Connect to Linux VM via SSH in browser. VMs have zero public IP addresses.",exam:"Bastion requires AzureBastionSubnet minimum /26. Basic SKU does not support native RDP client. Standard SKU adds native client, IP-based connection, and shareable links.",corp:"Azure Bastion is the Microsoft-recommended replacement for jump servers and VPN-based RDP access. It eliminates the attack surface of exposed RDP and SSH ports.",tags:["Browser-based RDP/SSH","No public IP on VMs","Basic vs Standard SKU","AzureBastionSubnet","Zero-trust access"]},
+  dns:{title:"Private DNS Zone",domain:"Virtual Networking · 15–20%",icon:"📡",color:"ni-amber",what:"Private DNS Zones provide name resolution for resources within Azure VNets using custom domain names — without exposing DNS records publicly.",how:"Create Private DNS Zone cloudcanvas.internal. Link to hub-vnet with auto-registration enabled. Verify Windows VM registers its hostname automatically. Create zone for storage private endpoint.",exam:"VNet links enable DNS resolution in that VNet. Auto-registration automatically registers VM hostnames. Private endpoint DNS zones must use the privatelink naming convention.",corp:"Private DNS is used for service discovery, private endpoint resolution, and internal naming conventions. Without correct DNS configuration Private Endpoints do not resolve correctly.",tags:["VNet link","Auto-registration","Private endpoint DNS","privatelink zones","Custom domain resolution"]},
+  udr:{title:"User Defined Routes",domain:"Virtual Networking · 15–20%",icon:"🗺️",color:"ni-amber",what:"UDRs or route tables override Azure's default routing to force traffic through a specific next hop such as a firewall NVA, VPN gateway, or specific subnet.",how:"Create a route table for subnet-data in spoke-vnet. Add a route with destination 0.0.0.0/0 and next hop as hub VNet IP simulating NVA routing. Associate route table to subnet.",exam:"Next hop types: VirtualAppliance for NVA IP, VirtualNetworkGateway, VnetLocal, Internet, None which drops traffic. System routes exist by default. UDRs override system routes.",corp:"Enterprises force all internet-bound traffic through Azure Firewall using UDRs — a security requirement for inspecting and logging outbound connections from workloads.",tags:["Route tables","Next hop types","NVA routing","Effective routes","Default route override"]},
+  sep:{title:"Service Endpoints",domain:"Virtual Networking · 15–20%",icon:"📶",color:"ni-amber",what:"Service Endpoints extend your VNet identity to Azure PaaS services over the Azure backbone. Traffic stays on the Microsoft network without using public IPs.",how:"Enable Storage Service Endpoint on subnet-data in spoke-vnet. Update storage account firewall to allow spoke-vnet. Test that storage is accessible from VNet but not from internet.",exam:"Service Endpoints versus Private Endpoints: Service EP extends VNet route to service and still uses the service public IP while Private EP gives the service a private IP in your VNet.",corp:"Service Endpoints are a lighter-weight alternative to Private Endpoints — easier to configure but less secure. Many organizations use them for non-critical PaaS access from VNets.",tags:["VNet extension to PaaS","Storage service endpoint","vs Private Endpoint","Firewall integration"]},
+  lb:{title:"Load Balancer",domain:"Virtual Networking · 15–20%",icon:"⚖️",color:"ni-amber",what:"Azure Load Balancer distributes inbound traffic across multiple backend VMs using Layer 4 TCP/UDP load balancing rules.",how:"Deploy an internal Standard Load Balancer in subnet-admin. Add both VMs as backend pool members. Create a health probe on port 80. Create a load balancing rule.",exam:"Load Balancer versus Application Gateway: LB is Layer 4 for IP and port while App Gateway is Layer 7 for HTTP and HTTPS with URL routing. Internal LB has private frontend IP; Public LB has public IP.",corp:"Any multi-VM web or API tier uses a load balancer to distribute traffic and eliminate single points of failure. Standard LB is required for Availability Zone deployments.",tags:["Backend pool","Health probes","Load balancing rules","Internal vs Public","Standard vs Basic SKU","Layer 4"]},
+  vpngw:{title:"VPN Gateway",domain:"Virtual Networking · 15–20%",icon:"🌉",color:"ni-amber",what:"VPN Gateway creates encrypted IPsec/IKE tunnels between Azure VNets and on-premises networks via Site-to-Site or individual clients via Point-to-Site.",how:"Documented with architecture diagram. VPN Gateway costs over $140 per month so we document the config steps and demonstrate Point-to-Site certificate setup instead.",exam:"Gateway SKUs: Basic, VpnGw1 through VpnGw5 with increasing throughput. S2S requires on-prem VPN device. P2S uses certificate or Entra ID auth. ExpressRoute is the dedicated private alternative.",corp:"Hybrid organizations connect Azure to datacenters via VPN Gateway or ExpressRoute. Government and regulated industries often mandate ExpressRoute over public VPN for compliance.",tags:["Site-to-Site VPN","Point-to-Site VPN","Local Network Gateway","IPsec/IKE","Gateway SKUs","ExpressRoute"]},
+  appgw:{title:"Application Gateway",domain:"Virtual Networking · 15–20%",icon:"🚧",color:"ni-amber",what:"Application Gateway is a Layer 7 load balancer with URL-based routing, SSL termination, session affinity, and optional Web Application Firewall for protecting web apps.",how:"Documented with architecture diagram. App Gateway cost means we document WAF policy configuration, URL path-based routing rules, and SSL termination setup with screenshots from Portal.",exam:"App Gateway versus Azure Front Door: App Gateway is regional while Front Door is global. WAF policies protect against OWASP Top 10. URL routing: /api/* goes to backend pool 1, /app/* goes to backend pool 2.",corp:"Every public-facing web application in enterprise Azure sits behind Application Gateway with WAF enabled. It is a security requirement and often mandated by compliance frameworks.",tags:["Layer 7 routing","URL path routing","SSL termination","WAF policy","Backend pools","Session affinity"]},
+  nw:{title:"Network Watcher",domain:"Virtual Networking · 15–20%",icon:"👁️",color:"ni-amber",what:"Network Watcher provides network monitoring and diagnostic tools for Azure including IP flow verify, connection troubleshoot, packet capture, and topology visualization.",how:"Run IP Flow Verify between Windows VM and spoke-vnet storage — shows which NSG rule allows or blocks the traffic. Run Connection Troubleshoot from Linux VM to internet.",exam:"Key tools: IP Flow Verify tests if NSG allows specific flow, Connection Troubleshoot for end-to-end connectivity, Packet Capture requires agent on VM, NSG Flow Logs logs all NSG decisions.",corp:"Network Watcher is the first tool Azure admins use when diagnosing connectivity issues. IP Flow Verify instantly tells you if an NSG is blocking traffic — saves hours of manual rule analysis.",tags:["IP Flow Verify","Connection Troubleshoot","Packet Capture","NSG Flow Logs","Topology view"]},
+  monitor:{title:"Azure Monitor",domain:"Monitor & Maintain · 10–15%",icon:"💓",color:"ni-green",what:"Azure Monitor is the central platform for collecting, analyzing, and acting on telemetry from Azure resources including metrics, logs, traces, and changes.",how:"Enable Azure Monitor on both VMs. View CPU, memory, disk, and network metrics in the Metrics Explorer. Create a custom dashboard pinning key charts for the CloudCanvas environment.",exam:"Metrics are numeric time-series data stored for 93 days. Logs are structured query-able data in Log Analytics. Azure Monitor is the umbrella service for Insights, Alerts, and Workbooks.",corp:"Azure Monitor is always-on for production environments. SRE and ops teams build dashboards showing real-time health of all services. It feeds incident response and capacity planning.",tags:["Metrics Explorer","Platform metrics","Custom dashboards","93-day retention","Telemetry collection"]},
+  law:{title:"Log Analytics Workspace",domain:"Monitor & Maintain · 10–15%",icon:"📟",color:"ni-green",what:"Log Analytics Workspace is the central repository for log data in Azure. Resources send their logs here and you query them using KQL (Kusto Query Language).",how:"Create a Log Analytics Workspace in rg-monitor. Connect both VMs via Azure Monitor Agent. Write KQL queries: find all failed login attempts, show top CPU processes, list all VM restarts in last 7 days.",exam:"KQL is the query language for Log Analytics. Common tables: Heartbeat for VM connectivity, Event for Windows events, Syslog for Linux, Perf for performance counters, AzureActivity for subscription activity.",corp:"Log Analytics is the foundation of security monitoring. Microsoft Sentinel uses it. KQL is a valuable skill — every Azure ops role uses it daily.",tags:["KQL queries","Log tables","Azure Monitor Agent","Heartbeat","30-day default retention"]},
+  diag:{title:"Diagnostic Settings",domain:"Monitor & Maintain · 10–15%",icon:"⚙️",color:"ni-green",what:"Diagnostic Settings configure where a resource sends its platform logs and metrics — to Log Analytics Workspace, Storage Account, Event Hub, or Partner solutions.",how:"Configure Diagnostic Settings on hub-vnet NSG to send NSG Flow Logs to storage account. Configure VM diagnostic settings to send guest OS metrics and logs to Log Analytics.",exam:"Each resource can have multiple diagnostic settings. Categories vary by resource type. Activity Log captures subscription-level events showing who deployed what and when.",corp:"Diagnostic settings are configured during resource deployment in enterprise environments. Compliance teams require specific logs to be retained for audit purposes.",tags:["Platform logs","Resource logs","Activity Log","Destinations","NSG Flow Logs"]},
+  alerts:{title:"Alerts & Action Groups",domain:"Monitor & Maintain · 10–15%",icon:"🔔",color:"ni-green",what:"Azure Monitor Alerts trigger notifications or automated actions when metrics or log conditions are met. Action Groups define who gets notified via email, SMS, webhook, or runbook.",how:"Create metric alert: CPU above 80 percent on Windows VM for 5 minutes triggers Action Group email. Create log alert: any failed SSH attempts on Linux VM triggers email notification.",exam:"Alert types: Metric near real-time, Log runs KQL query on schedule, Activity Log for subscription events. Action Groups are reusable across multiple alerts. Alert states: Fired and Resolved.",corp:"On-call engineers receive PagerDuty or Teams alerts triggered by Azure Monitor. Alert tuning to avoid alert fatigue while catching real issues is an ongoing operational task.",tags:["Metric alerts","Log alerts","Activity Log alerts","Action Groups","Email/SMS/webhook","Alert states"]},
+  vminsights:{title:"VM Insights",domain:"Monitor & Maintain · 10–15%",icon:"📈",color:"ni-green",what:"VM Insights is a pre-built monitoring solution that provides performance charts, dependency maps, and trend analysis for Azure VMs.",how:"Enable VM Insights on both VMs. Explore the Performance tab for CPU, memory, disk, network trending. View the Map tab showing network connections from VMs to storage and external endpoints.",exam:"VM Insights requires Azure Monitor Agent. The Map feature uses Dependency Agent. Shows top N processes by CPU and memory. Performance data is stored in Log Analytics.",corp:"VM Insights provides the dependency map showing exactly what each VM is talking to — invaluable during incident investigation and before making network security changes.",tags:["Performance charts","Dependency Map","Azure Monitor Agent","Dependency Agent","Process monitoring"]},
+  vault:{title:"Recovery Services Vault",domain:"Monitor & Maintain · 10–15%",icon:"🔐",color:"ni-green",what:"Recovery Services Vault is the storage container for Azure Backup and Azure Site Recovery data. It stores backup items, recovery points, and replication data.",how:"Create Recovery Services Vault in rg-monitor with GRS redundancy. Enable VM backup for Windows VM. Enable Azure Files backup for the contoso-share file share. View vault dashboard.",exam:"Vault redundancy LRS/ZRS/GRS determines how backup data is replicated — change before adding items not after. Soft delete retains deleted backups for 14 days. Immutable vault prevents backup deletion.",corp:"Every production VM must have backup configured. Compliance requirements often mandate specific retention periods such as 7 years for financial data. Vault design impacts disaster recovery RTO/RPO.",tags:["Vault redundancy","Protected items","Soft delete","Immutable vault","Azure Site Recovery"]},
+  backup:{title:"Backup Policy",domain:"Monitor & Maintain · 10–15%",icon:"☁️",color:"ni-green",what:"Backup Policies define the schedule such as daily or weekly and retention rules for how many daily, weekly, monthly, and yearly recovery points to keep.",how:"Create a custom backup policy: daily backup at 2am UTC, retain daily points for 7 days, weekly for 4 weeks, monthly for 12 months. Apply to Windows VM. Show recovery points in vault.",exam:"Default policy: daily at 9:30pm UTC with 30-day retention. Enhanced policy supports hourly backups and trusted launch VMs. Retention granularity: Daily, Weekly, Monthly, Yearly.",corp:"Backup policy design aligns to business RPO requirements. Financial systems may require hourly backups while dev servers might only need weekly. Policy is a governance decision.",tags:["Backup schedule","Retention rules","Daily/weekly/monthly points","Enhanced policy","RPO alignment"]},
+  restore:{title:"File-Level Restore",domain:"Monitor & Maintain · 10–15%",icon:"⬇️",color:"ni-green",what:"Azure Backup supports restoring individual files from a VM backup without restoring the entire VM by mounting the recovery point as a disk and browsing files.",how:"From a Windows VM recovery point click File Recovery. Download and run the mount script on the VM. Browse the mounted recovery point drive. Recover a specific file. Unmount when done.",exam:"File recovery mounts the recovery point as an iSCSI disk on the target VM. Script is valid for 12 hours. Full VM restore options: Create new VM, Restore disk, or Replace existing VM.",corp:"Users accidentally delete files regularly. File-level restore from VM backup resolves this in minutes without restoring the entire VM — critical for minimizing downtime in production.",tags:["File Recovery","Mount script","Recovery point browsing","Full VM restore options","iSCSI mount"]},
+  advisor:{title:"Azure Advisor",domain:"Monitor & Maintain · 10–15%",icon:"💡",color:"ni-green",what:"Azure Advisor is a free personalized cloud consultant that analyzes your Azure resources and recommends improvements across Cost, Security, Reliability, Performance, and Operational Excellence.",how:"Open Advisor for the CloudCanvas subscription. Review all recommendation categories. Implement a cost recommendation such as resizing an underutilized VM. Screenshot the Advisor score before and after.",exam:"Five categories: Cost, Security, Reliability, Performance, Operational Excellence. Recommendations are based on actual usage telemetry. Advisor score aggregates all recommendations. Can snooze or dismiss.",corp:"Cloud architects review Advisor recommendations weekly. Security recommendations often overlap with Microsoft Defender for Cloud findings. Cost recommendations can identify thousands in monthly savings.",tags:["Five pillars","Advisor score","Cost recommendations","Security recommendations","Snooze/dismiss"]}
 };
 
-function openPanel(id) {
-  var d = D[id];
-  if (!d) return;
-  document.getElementById('p-title').textContent = d.title;
-  document.getElementById('p-domain').textContent = d.domain;
-  var ic = document.getElementById('p-icon');
-  ic.textContent = d.icon;
-  ic.className = 'panel-icon ' + d.color;
-  document.getElementById('p-what').textContent = d.what;
-  document.getElementById('p-how').textContent = d.how;
-  document.getElementById('p-exam').textContent = d.exam;
-  document.getElementById('p-corp').textContent = d.corp;
-  var tc = document.getElementById('p-tags');
-  tc.innerHTML = '';
-  for (var i = 0; i < d.tags.length; i++) {
-    var span = document.createElement('span');
-    span.className = 'p-tag';
-    span.textContent = d.tags[i];
-    tc.appendChild(span);
+function openPanel(id){
+  var d=D[id];
+  if(!d)return;
+  document.getElementById('p-title').textContent=d.title;
+  document.getElementById('p-domain').textContent=d.domain;
+  var ic=document.getElementById('p-icon');
+  ic.textContent=d.icon;
+  ic.className='panel-icon '+d.color;
+  document.getElementById('p-what').textContent=d.what;
+  document.getElementById('p-how').textContent=d.how;
+  document.getElementById('p-exam').textContent=d.exam;
+  document.getElementById('p-corp').textContent=d.corp;
+  var tc=document.getElementById('p-tags');
+  tc.innerHTML='';
+  for(var i=0;i<d.tags.length;i++){
+    var s=document.createElement('span');
+    s.className='p-tag';
+    s.textContent=d.tags[i];
+    tc.appendChild(s);
   }
   document.getElementById('overlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
 }
 
-function closePanel() {
+function closePanel(){
   document.getElementById('overlay').classList.remove('active');
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
 }
 
-document.getElementById('closeBtn').addEventListener('click', closePanel);
-document.getElementById('overlay').addEventListener('click', function(e) {
-  if (e.target === this) closePanel();
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closePanel();
+document.getElementById('closeBtn').addEventListener('click',closePanel);
+document.getElementById('overlay').addEventListener('click',function(e){if(e.target===this)closePanel();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
+
+document.querySelectorAll('.node').forEach(function(node){
+  node.addEventListener('click',function(){openPanel(this.getAttribute('data-id'));});
 });
 
-document.querySelectorAll('.node').forEach(function(node) {
-  node.addEventListener('click', function() {
-    var id = this.getAttribute('data-id');
-    openPanel(id);
-  });
-});
-
-document.querySelectorAll('.filter-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+document.querySelectorAll('.filter-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');
-    var domain = btn.getAttribute('data-domain');
-    document.querySelectorAll('.domain-group').forEach(function(g) {
-      g.style.display = (domain === 'all' || g.getAttribute('data-domain') === domain) ? 'block' : 'none';
+    var domain=btn.getAttribute('data-domain');
+    document.querySelectorAll('.domain-group').forEach(function(g){
+      g.style.display=(domain==='all'||g.getAttribute('data-domain')===domain)?'block':'none';
     });
-    document.getElementById('searchInput').value = '';
-    document.getElementById('no-results').style.display = 'none';
-    document.querySelectorAll('.node').forEach(function(n) { n.classList.remove('hidden'); });
+    if(domain!=='all'){
+      var target=document.getElementById('domain-'+domain);
+      if(target){setTimeout(function(){target.scrollIntoView({behavior:'smooth',block:'start'});},50);}
+    }
+    document.getElementById('searchInput').value='';
+    document.getElementById('no-results').style.display='none';
+    document.querySelectorAll('.node').forEach(function(n){n.classList.remove('hidden');});
   });
 });
 
-document.getElementById('searchInput').addEventListener('input', function() {
-  var q = this.value.toLowerCase().trim();
-  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+document.getElementById('searchInput').addEventListener('input',function(){
+  var q=this.value.toLowerCase().trim();
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
   document.querySelector('[data-domain="all"]').classList.add('active');
-  document.querySelectorAll('.domain-group').forEach(function(g) { g.style.display = 'block'; });
-  var anyVisible = false;
-  document.querySelectorAll('.node').forEach(function(node) {
-    var label = node.querySelector('.node-label').textContent.toLowerCase();
-    var id = node.getAttribute('data-id');
-    var data = D[id];
-    var searchStr = label + (data ? ' ' + data.what.toLowerCase() + ' ' + data.tags.join(' ').toLowerCase() : '');
-    if (!q || searchStr.indexOf(q) !== -1) {
-      node.classList.remove('hidden');
-      anyVisible = true;
-    } else {
-      node.classList.add('hidden');
-    }
+  document.querySelectorAll('.domain-group').forEach(function(g){g.style.display='block';});
+  var any=false;
+  document.querySelectorAll('.node').forEach(function(node){
+    var label=node.querySelector('.node-label').textContent.toLowerCase();
+    var id=node.getAttribute('data-id');
+    var d=D[id];
+    var str=label+(d?' '+d.what.toLowerCase()+' '+d.tags.join(' ').toLowerCase():'');
+    if(!q||str.indexOf(q)!==-1){node.classList.remove('hidden');any=true;}
+    else{node.classList.add('hidden');}
   });
-  document.getElementById('no-results').style.display = (!q || anyVisible) ? 'none' : 'block';
+  document.getElementById('no-results').style.display=(!q||any)?'none':'block';
+});
+
+// Fix nav link scroll for architecture to avoid the black bar glitch
+document.querySelector('a[href="#architecture"]') && document.querySelectorAll('a[href="#architecture"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=document.getElementById('architecture');
+    if(t){window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}
+  });
+});
+document.querySelectorAll('a[href="#topology"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=document.getElementById('topology');
+    if(t){window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}
+  });
+});
+document.querySelectorAll('a[href="#progress"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=document.getElementById('progress');
+    if(t){window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}
+  });
 });
 </script>
 </body>
