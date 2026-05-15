@@ -92,24 +92,25 @@ h1 em{font-style:italic;color:var(--accent)}
 .overlay{display:none;position:fixed;inset:0;background:rgba(28,25,23,0.5);z-index:200;align-items:flex-end;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
 .overlay.active{display:flex}
 @media(min-width:640px){.overlay{align-items:center}}
-.panel{background:var(--cream);border-radius:20px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;border:1px solid rgba(28,25,23,0.1);animation:slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1)}
-@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
-.panel-top{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid rgba(28,25,23,0.08);display:flex;align-items:flex-start;gap:14px}
-.panel-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.panel-meta{flex:1}
-.panel-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:500;color:var(--ink);letter-spacing:-0.01em}
-.panel-domain-tag{font-size:11px;color:var(--ink3);margin-top:4px}
-.panel-close{background:none;border:none;cursor:pointer;color:var(--ink3);font-size:20px;padding:4px;line-height:1;border-radius:6px;transition:background 0.2s;flex-shrink:0}
-.panel-close:hover{background:var(--cream2);color:var(--ink)}
-.panel-body{padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem}
-.p-label{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
-.p-text{font-size:14px;color:var(--ink2);line-height:1.7;font-weight:300}
-.p-tip{background:white;border:1px solid rgba(28,25,23,0.08);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--ink2);line-height:1.6}
-.p-tip strong{font-weight:500;color:var(--ink)}
-.p-corp{background:var(--cream2);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--ink2);line-height:1.6}
+.panel{background:var(--cream);border-radius:24px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;border:none;animation:slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 24px 60px rgba(28,25,23,0.22)}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.panel-top{padding:2rem 2rem 1.75rem;display:flex;align-items:flex-start;gap:1rem;background:linear-gradient(135deg,#2C2925 0%,#1C1917 100%);border-radius:24px 24px 0 0;position:relative;box-shadow:0 4px 20px rgba(28,25,23,0.15)}
+.panel-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12)}
+.panel-meta{flex:1;padding-top:4px}
+.panel-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:500;color:white;letter-spacing:-0.02em;line-height:1.2}
+.panel-domain-tag{font-size:11px;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:0.06em;text-transform:uppercase}
+.panel-close{background:rgba(255,255,255,0.1);border:none;cursor:pointer;color:rgba(255,255,255,0.7);font-size:16px;padding:0;line-height:1;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;margin-top:2px}
+.panel-close:hover{background:rgba(255,255,255,0.2);color:white}
+.panel-body{padding:1.75rem;display:flex;flex-direction:column;gap:1rem;background:var(--cream)}
+.p-label{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px}
+.p-text{font-size:14px;color:var(--ink2);line-height:1.75;font-weight:300}
+.p-tip{background:white;border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 14px;font-size:13px;color:var(--ink2);line-height:1.6;box-shadow:0 1px 4px rgba(28,25,23,0.06)}
+.p-tip strong{font-weight:500;color:var(--accent)}
+.p-corp{background:#E8E0D0;border-radius:10px;padding:12px 14px;font-size:13px;color:var(--ink2);line-height:1.6;border:1px solid rgba(28,25,23,0.12)}
 .p-corp strong{font-weight:500;color:var(--ink)}
 .p-tags{display:flex;flex-wrap:wrap;gap:6px}
-.p-tag{font-size:11px;padding:3px 10px;border-radius:100px;background:white;border:1px solid rgba(28,25,23,0.1);color:var(--ink2);font-weight:400}
+.p-tag{font-size:11px;padding:4px 12px;border-radius:100px;background:white;border:1px solid rgba(28,25,23,0.1);color:var(--ink2);font-weight:400;transition:all 0.15s}
+.p-tag:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
 .progress-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:1.5rem}
 .prog-card{background:white;border:1px solid rgba(28,25,23,0.08);border-radius:var(--radius);padding:1.25rem;transition:box-shadow 0.2s}
 .prog-label{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:8px}
@@ -126,10 +127,33 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
 .footer-copy .powered{position:absolute;bottom:100%;left:50%;transform:translateX(-50%) translateY(4px);background:var(--ink);color:var(--cream);font-size:11px;padding:4px 10px;border-radius:100px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s}
 .footer-copy:hover .powered{opacity:1;transform:translateX(-50%) translateY(-4px)}
 /* SCROLL INDICATOR */
-.scroll-indicator{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+.scroll-indicator {
+  position: fixed;
+  /* Adjust this: 10px to 15px is usually the 'not too extreme' sweet spot */
+  right: 12px; 
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
 .scroll-track{width:2px;height:120px;background:rgba(28,25,23,0.1);border-radius:100px;position:relative;overflow:hidden}
 .scroll-thumb{width:2px;background:var(--accent);border-radius:100px;position:absolute;top:0;height:0%;transition:height 0.15s}
-.scroll-pct{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:0.05em}
+/* Update your existing .scroll-pct class to this: */
+.scroll-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: 0.05em;
+  
+  /* These fix the sliding/jumping issue */
+  display: inline-block;
+  width: 35px;         /* Creates a fixed container for the text */
+  text-align: center;  /* Centers the text within that container */
+}
 </style>
 </head>
 <body>
@@ -164,7 +188,6 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
   <div class="hero-stats">
     <div><div class="stat-num">39</div><div class="stat-label">Azure components</div></div>
     <div><div class="stat-num">5</div><div class="stat-label">AZ-104 domains</div></div>
-    <div><div class="stat-num">100%</div><div class="stat-label">Exam coverage</div></div>
     <div><div class="stat-num">1</div><div class="stat-label">Connected environment</div></div>
   </div>
 </div>
@@ -303,7 +326,9 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
     <a href="https://github.com/MannP-Cloud/cloudcanvas/tree/main/01-identity" target="_blank" style="text-decoration:none;display:block">
     <div class="prog-card" onmouseover="this.style.boxShadow='0 4px 20px rgba(28,25,23,0.12)'" onmouseout="this.style.boxShadow='none'"><div class="prog-label">01 · Identity</div><div class="prog-bar-wrap"><div class="prog-bar" data-width="100" style="background:#6D28D9"></div></div><div class="prog-status" style="color:#6D28D9;font-weight:500">✓ Complete · View on GitHub →</div></div>
     </a>
-    <div class="prog-card"><div class="prog-label">02 · Networking</div><div class="prog-bar-wrap"><div class="prog-bar" data-width="5" style="background:#B45309"></div></div><div class="prog-status">Coming soon</div></div>
+ <a href="https://github.com/MannP-Cloud/cloudcanvas/tree/main/02-networking" target="_blank" style="text-decoration:none;display:block">
+<div class="prog-card" onmouseover="this.style.boxShadow='0 4px 20px rgba(28,25,23,0.12)'" onmouseout="this.style.boxShadow='none'"><div class="prog-label">02 · Networking</div><div class="prog-bar-wrap"><div class="prog-bar" data-width="100" style="background:#B45309"></div></div><div class="prog-status" style="color:#B45309;font-weight:500">✓ Complete · View on GitHub →</div></div>
+</a>
     <div class="prog-card"><div class="prog-label">03 · Compute</div><div class="prog-bar-wrap"><div class="prog-bar" data-width="5" style="background:#0F766E"></div></div><div class="prog-status">Coming soon</div></div>
     <div class="prog-card"><div class="prog-label">04 · Storage</div><div class="prog-bar-wrap"><div class="prog-bar" data-width="5" style="background:#1E40AF"></div></div><div class="prog-status">Coming soon</div></div>
     <div class="prog-card"><div class="prog-label">05 · Monitor</div><div class="prog-bar-wrap"><div class="prog-bar" data-width="5" style="background:#15803D"></div></div><div class="prog-status">Coming soon</div></div>
@@ -336,7 +361,7 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
       </div>
       <button class="panel-close" id="closeBtn">✕</button>
     </div>
-    <div class="panel-body">
+<div class="panel-body">
       <div><div class="p-label">What it is</div><div class="p-text" id="p-what"></div></div>
       <div><div class="p-label">How it's built in CloudCanvas</div><div class="p-text" id="p-how"></div></div>
       <div class="p-tip"><strong>Exam tip — </strong><span id="p-exam"></span></div>
