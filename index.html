@@ -47,7 +47,21 @@ h1 em{font-style:italic;color:var(--accent)}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,40px);font-weight:500;letter-spacing:-0.02em;color:var(--ink);margin-bottom:0.5rem}
 .section-sub{font-size:15px;color:var(--ink2);font-weight:300;line-height:1.7;max-width:520px;margin-bottom:2.5rem}
 .arch-layout{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
-@media(max-width:600px){   nav{padding:1rem 1.25rem}   .nav-links{gap:1rem}   .nav-links a{font-size:11px} .nav-links .nav-cta{display:none}   .hero{padding:7rem 1.25rem 3rem}   h1{font-size:clamp(32px,8vw,52px)}   .hero-sub{font-size:15px}   .btn-primary,.btn-secondary{padding:11px 20px;font-size:13px}   .section{padding:2.5rem 1.25rem}   .node-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}   .panel{border-radius:16px}   .hero-stats{gap:1.5rem} }
+@media(max-width:600px){
+  nav{padding:1rem 1.25rem}
+  .nav-links{gap:1rem}
+  .nav-links a{font-size:11px}
+  .nav-links .nav-cta{display:none}
+  .nav-github{display:none}
+  .hero{padding:7rem 1.25rem 3rem}
+  h1{font-size:clamp(32px,8vw,52px)}
+  .hero-sub{font-size:15px}
+  .btn-primary,.btn-secondary{padding:11px 20px;font-size:13px}
+  .section{padding:2.5rem 1.25rem}
+  .node-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .panel{border-radius:16px}
+  .hero-stats{gap:1.5rem}
+}
 .arch-visual{width:180px;opacity:0.75;flex-shrink:0;margin-top:-1rem}
 @media(max-width:700px){.arch-visual{width:120px;margin:0 auto}}
 .arch-card{background:white;border:1px solid rgba(28,25,23,0.08);border-radius:var(--radius);overflow:hidden;margin-bottom:1rem}
@@ -172,7 +186,7 @@ footer{padding:3rem 2.5rem;border-top:1px solid rgba(28,25,23,0.08);display:flex
     <a href="#architecture">Architecture</a>
     <a href="#topology">Topology</a>
     <a href="#progress">Progress</a>
-    <a href="https://github.com/MannP-Cloud/cloudcanvas" target="_blank">GitHub ↗</a>
+    <a href="https://github.com/MannP-Cloud/cloudcanvas" target="_blank" class="nav-github">GitHub ↗</a>
     <a href="https://www.linkedin.com/in/mannp14" target="_blank" class="nav-cta">Connect</a>
   </div>
 </nav>
